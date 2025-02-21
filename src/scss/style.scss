@@ -1,6 +1,12 @@
 // Main Stylesheet
 
+/* ========Variables======= */
+$primary: #5e48cc;
+$secondary: #5c2751;
+$black: #000000;
+$white: #ffffff;
 
+/* ========Utility======== */
 body {
   font-family: "Roboto", serif;
   font-optical-sizing: auto;
@@ -9,6 +15,50 @@ body {
   "wdth" 100;
 }
 
+.btn {
+  &__back {
+    color: $white;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: #ffffff, $alpha: .4);
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+
+    &:active {
+      background: $secondary;
+      color: $white;
+    }
+  }
+}
+
+.header {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  
+  .btn {
+    color: $white;
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    &.active {
+      background: white;
+      color: $secondary;
+    }
+  }
+}
+
+
+/* =====Home===== */
 .home {
   &-icon {
     font-size: 5rem;

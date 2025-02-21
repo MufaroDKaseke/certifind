@@ -12,6 +12,7 @@ require_once './app/config/config.php';
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./assets/css/custom.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -19,16 +20,16 @@ require_once './app/config/config.php';
 
 <body>
 
-  <section class="home bg-primary">
+  <section class="welcome bg-primary animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row vh-100 align-items-center justify-content-center">
         <div class="col-9 text-center">
-          <span class="home-icon mb-4">
+          <span class="welcome-icon mb-4">
             <i class="bi bi-binoculars text-white"></i>
           </span>
           <h1 class="text-white display-2 mb-3 fw-semibold">CertiFind</h1>
           <button hx-get="login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-4">Login</button>
-          <button class="btn btn-secondary w-100 rounded-pill">Signup</button>
+          <button hx-get="home.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
         </div>
       </div>
     </div>
