@@ -1,0 +1,19 @@
+// Import Bootstrap's functions
+@import "../../vendor/twbs/bootstrap/scss/functions";
+
+// Override Bootstrap variables
+$primary: #5e48cc;
+$secondary: #5c2751;
+$font-family-base: 'Roboto', serif;
+
+// Import variables and bootstrap
+@import "../../vendor/twbs/bootstrap/scss/variables";
+
+$btn-font-weight: 700;
+// $input-placeholder-color: $white;
+
+@import "../../vendor/twbs/bootstrap/scss/bootstrap";
+
+.btn {
+  text-transform: uppercase;
+}
