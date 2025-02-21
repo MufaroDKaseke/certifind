@@ -1,0 +1,19 @@
+{
+    "name": "mufar/certifind",
+    "autoload": {
+        "psr-4": {
+            "Mufar\\Certifind\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MufaroDKaseke",
+            "email": "mufarodkaseke@gmail.com"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "^5.3",
+        "twbs/bootstrap-icons": "^1.11",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
