@@ -63,7 +63,7 @@
       </div>
       <div class="col-3 text-center">
         <button class="btn">
-          <i class="bi bi-campus"></i>
+          <i class="bi bi-compass"></i>
         </button>
       </div>
       <div class="col-3 text-center">

@@ -30,8 +30,8 @@ a {
     position: fixed;
     top: 10px;
     left: 10px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     z-index: 1;
     
     &:active {
@@ -92,6 +92,7 @@ a {
 
 /* =====Welcome===== */
 .welcome {
+  background: linear-gradient(45deg, $primary, $secondary);
   &-icon {
     font-size: 5rem;
     transform: rotateZ(45deg);
