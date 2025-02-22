@@ -23,13 +23,15 @@ require_once './app/config/config.php';
   <section class="welcome bg-primary animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row vh-100 align-items-center justify-content-center">
-        <div class="col-9 text-center">
+        <div class="col-12 text-center">
           <span class="welcome-icon mb-4">
             <i class="bi bi-binoculars text-white"></i>
           </span>
           <h1 class="text-white display-2 mb-3 fw-semibold">CertiFind</h1>
-          <button hx-get="login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-4">Login</button>
+          <button hx-get="login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-2">Login</button>
           <button hx-get="home.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
+          <hr class="mx-auto w-75 mb-3">
+          <button hx-get="verification_request.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill text-capitalize">I am a business</button>
         </div>
       </div>
     </div>

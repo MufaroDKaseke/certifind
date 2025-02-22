@@ -15,6 +15,10 @@ body {
   "wdth" 100;
 }
 
+a {
+  text-decoration: none;
+}
+
 .btn {
   &__back {
     color: $white;
@@ -29,7 +33,7 @@ body {
     width: 50px;
     height: 50px;
     z-index: 1;
-
+    
     &:active {
       background: $secondary;
       color: $white;
@@ -39,17 +43,45 @@ body {
 
 .header {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: .5rem;
+  background-color: $primary;
+  color: $white;
+  text-align: center;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  
+  &-back-btn {
+    font-size: 1.4rem;
+    color: $white;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: #ffffff, $alpha: .4);
+  }
+
+  &-options-btn {
+    font-size: 1.4rem;
+    color: $white;
+  }
+}
+
+.footer {
+  position: fixed;
   bottom: 0;
   left: 0;
   padding: 1rem;
   
   .btn {
     color: $white;
-
+    
     i {
       font-size: 1.5rem;
     }
-
+    
     &.active {
       background: white;
       color: $secondary;
@@ -58,9 +90,25 @@ body {
 }
 
 
-/* =====Home===== */
-.home {
+/* =====Welcome===== */
+.welcome {
   &-icon {
     font-size: 5rem;
+    transform: rotateZ(45deg);
+  }
+}
+
+/* ======Home Section========= */
+.home {
+  font-size: 90%;
+}
+
+/* ======Categories Section ====== */
+.categories {
+  
+  &-single {
+    display: block;
+    background-position: center;
+    background-size: cover;
   }
 }

@@ -7,6 +7,10 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+a {
+  text-decoration: none;
+}
+
 .btn__back {
   color: #ffffff;
   border-radius: 0.5rem;
@@ -28,24 +32,63 @@ body {
 
 .header {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #5e48cc;
+  color: #ffffff;
+  text-align: center;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.header-back-btn {
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.header-options-btn {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.footer {
+  position: fixed;
   bottom: 0;
   left: 0;
   padding: 1rem;
 }
-.header .btn {
+.footer .btn {
   color: #ffffff;
 }
-.header .btn i {
+.footer .btn i {
   font-size: 1.5rem;
 }
-.header .btn.active {
+.footer .btn.active {
   background: white;
   color: #5c2751;
 }
 
-/* =====Home===== */
-.home-icon {
+/* =====Welcome===== */
+.welcome-icon {
   font-size: 5rem;
+  transform: rotateZ(45deg);
+}
+
+/* ======Home Section========= */
+.home {
+  font-size: 90%;
+}
+
+/* ======Categories Section ====== */
+.categories-single {
+  display: block;
+  background-position: center;
+  background-size: cover;
 }
 
 /*# sourceMappingURL=style.css.map */
