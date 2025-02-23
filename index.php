@@ -46,22 +46,6 @@ require_once './app/config/config.php';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
-  <script>
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          function(position) {
-            let latitude = position.coords.latitude;
-            let longitude = position.coords.longitude;
-            console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
-          },
-          function(error) {
-            console.error('Error occurred. Error code: ' + error.code);
-          }
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-      }
-  </script>
 </body>
 
 </html>

@@ -46,13 +46,13 @@ $service = new Services();
           $nearestServicesInCategory = $service->getNearestServicesByCategory($_GET['lat'], $_GET['long'], $_GET['category']);
 
           if ($nearestServicesInCategory && !empty($nearestServicesInCategory)) {
-            ?>
+        ?>
             <div class="col-12">
-              <p class="text-center text-secondary fw-semibold"><?=count($nearestServicesInCategory)?> found</p>
+              <p class="text-center text-secondary fw-semibold"><?= count($nearestServicesInCategory) ?> found</p>
             </div>
             <?php
             foreach ($nearestServicesInCategory as $provider) {
-        ?>    
+            ?>
               <div class="listing col-12 mb-2">
                 <div class="rounded rounded-3 bg-secondary p-3 text-white d-flex align-items-center justify-content-between">
                   <div>
@@ -65,7 +65,7 @@ $service = new Services();
                       <i class="bi bi-star-fill text-warning"></i>
                       <i class="bi bi-star-half text-warning"></i>
                     </div>
-                    <p class="listing-distance mb-0"><?=$provider['distance']?>km</p>
+                    <p class="listing-distance mb-0"><?= $provider['distance'] ?>km</p>
                   </div>
                   <div class="listing-verification p-3">
                     <i class="bi bi-patch-check-fill fs-1"></i>
@@ -88,23 +88,23 @@ $service = new Services();
   <div class="footer w-100">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
-        <button class="btn">
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
           <i class="bi bi-house"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn active">
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/search.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
           <i class="bi bi-search"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn">
-          <i class="bi bi-briefcase"></i>
+        <button class="btn active" hx-get="<?= $_ENV['SITE_URL'] ?>/user/categories.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+          <i class="bi bi-compass"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn">
-          <i class="bi bi-gear"></i>
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/profile.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+          <i class="bi bi-person-circle"></i>
         </button>
       </div>
     </div>

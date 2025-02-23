@@ -49,23 +49,23 @@ require_once '../app/config/config.php';
   <div class="footer w-100">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
-        <button class="btn">
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
           <i class="bi bi-house"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn active">
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/search.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
           <i class="bi bi-search"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn">
-          <i class="bi bi-briefcase"></i>
+        <button class="btn active" hx-get="<?= $_ENV['SITE_URL'] ?>/user/categories.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+          <i class="bi bi-compass"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn">
-          <i class="bi bi-gear"></i>
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/profile.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+          <i class="bi bi-person-circle"></i>
         </button>
       </div>
     </div>

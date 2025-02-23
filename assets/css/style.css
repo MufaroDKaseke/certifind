@@ -127,4 +127,13 @@ a {
   margin: 6rem auto;
 }
 
+/* ===========Profile========= */
+.profile {
+  margin: 6rem auto;
+}
+.profile-name i {
+  color: #5c2751;
+  font-size: 5rem;
+}
+
 /*# sourceMappingURL=style.css.map */

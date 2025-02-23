@@ -93,18 +93,18 @@ $services = new Services();
         </button>
       </div>
       <div class="col-3 text-center">
+        <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/search.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+      <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/categories.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
           <i class="bi bi-compass"></i>
         </button>
       </div>
       <div class="col-3 text-center">
-        <button class="btn">
-          <i class="bi bi-briefcase"></i>
-        </button>
-      </div>
-      <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/profile.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
-          <i class="bi bi-gear"></i>
+          <i class="bi bi-person-circle"></i>
         </button>
       </div>
     </div>
@@ -115,7 +115,21 @@ $services = new Services();
   <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
   <script>
-    // Coordinates script
+    // Request location access
+    $(document).ready(function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function() {
+            console.log("Location access granted.");
+          },
+          function(error) {
+            console.warn("Error: " + error.message);
+          }
+        );
+      } else {
+        console.warn("Geolocation is not supported by this browser.");
+      }
+    });
   </script>
 </body>
 

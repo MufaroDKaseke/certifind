@@ -150,3 +150,15 @@ a {
 .listings {
   margin: 6rem auto;
 }
+
+/* ===========Profile========= */
+.profile {
+  margin: 6rem auto;
+
+  &-name {
+    i {
+      color: $secondary;
+      font-size: 5rem;
+    }
+  }
+}

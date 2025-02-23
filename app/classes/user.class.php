@@ -61,8 +61,8 @@ class User extends Database {
   public function getUserDetails() {
     $this->connect();
 
-    $stmt = mysqli_prepare($this->db_conn, 'SELECT * FROM users WHERE id = ?');
-    mysqli_stmt_bind_param($stmt, 's', $_SESSION['user_idid']);
+    $stmt = mysqli_prepare($this->db_conn, 'SELECT * FROM users WHERE user_id = ?');
+    mysqli_stmt_bind_param($stmt, 's', $_SESSION['user_id']);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $user = mysqli_fetch_assoc($result);
