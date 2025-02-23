@@ -42,10 +42,10 @@ class Services extends Database {
   public function getNearestServicesByCategory($userLat, $userLong, $category) {
     $this->connect();
 
-    $stmt = mysqli_prepare($this->db_conn,    "SELECT provider_id, name, category, location, 
-                                                    (6371 * acos(cos(radians(?)) * cos(radians(SUBSTRING_INDEX(location, ',', 1))) 
+    $stmt = mysqli_prepare($this->db_conn,    "SELECT provider_id, name, category, location, primary_email, verified, address, 
+                                                    ROUND((6371 * acos(cos(radians(?)) * cos(radians(SUBSTRING_INDEX(location, ',', 1))) 
                                                     * cos(radians(SUBSTRING_INDEX(location, ',', -1)) - radians(?)) 
-                                                    + sin(radians(?)) * sin(radians(SUBSTRING_INDEX(location, ',', 1))))) 
+                                                    + sin(radians(?)) * sin(radians(SUBSTRING_INDEX(location, ',', 1))))), 2)
                                                     AS distance 
                                               FROM providers 
                                               WHERE category = ? 

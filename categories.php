@@ -5,7 +5,7 @@
     <button class="header-back-btn btn">
       <i class="bi bi-chevron-left"></i>
     </button>
-    <h5 class="mb-0 text-center">Catgeories</h5>
+    <h5 class="mb-0 text-center">Categories</h5>
     <button class="header-options-btn btn">
       <i class="bi bi-filter-right"></i>
     </button>

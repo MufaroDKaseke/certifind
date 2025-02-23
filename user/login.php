@@ -1,3 +1,8 @@
+<?php
+require_once '../vendor/autoload.php';
+require_once '../app/config/config.php';
+?>
+
 <body>
 
   <!-- Back Button -->
@@ -9,7 +14,7 @@
     <div class="container animate__animated animate__fadeInRight animate__fast">
       <div class="row vh-100 align-items-center justify-content-center">
         <div class="col-10">
-          <form action="">
+          <form action="<?=$_ENV['SITE_URL']?>/user/" method="post">
             <h1 class="text-center display-3 text-white fw-semibold mb-4">Login</h1>
             <div class="form-group mb-3">
               <label for="username" class="form-label fw-semibold text-white">Username</label>
@@ -29,8 +34,13 @@
                 <input type="password" name="password" id="password" placeholder="Password" class="form-control">
               </div>
             </div>
+            <div class="mt-2 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label text-white" for="exampleCheck1">Remember password?</label>
+            </div>
             <hr class="mx-auto w-75 my-3">
             <div class="form-group">
+              <input type="hidden" name="action" value="login">
               <button class="btn btn-secondary rounded-pill w-100">Login</button>
             </div>
           </form>

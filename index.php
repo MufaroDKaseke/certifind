@@ -33,10 +33,10 @@ require_once './app/config/config.php';
             <i class="bi bi-binoculars text-white"></i>
           </span>
           <h1 class="text-white mb-4 fw-semibold">Welcome Back</h1>
-          <button hx-get="login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-2">Login</button>
-          <button hx-get="home.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
+          <button hx-get="./user/login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-2">Login</button>
+          <button hx-get="./user/signup.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
           <hr class="mx-auto w-75 mb-3">
-          <button hx-get="signup.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-secondary w-100 rounded-pill text-capitalize text-white">I am a business</button>
+          <button hx-get="" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-secondary w-100 rounded-pill text-capitalize text-white">I am a business</button>
         </div>
       </div>
     </div>
@@ -47,20 +47,20 @@ require_once './app/config/config.php';
   <script src="./vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
   <script>
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          let latitude = position.coords.latitude;
-          let longitude = position.coords.longitude;
-          console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
-        },
-        function(error) {
-          console.error('Error occurred. Error code: ' + error.code);
-        }
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-    }
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+            console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
+          },
+          function(error) {
+            console.error('Error occurred. Error code: ' + error.code);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
   </script>
 </body>
 
