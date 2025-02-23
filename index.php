@@ -16,6 +16,11 @@ require_once './app/config/config.php';
   <link rel="stylesheet" href="./vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./assets/css/custom.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </head>
 
 <body>
@@ -31,7 +36,7 @@ require_once './app/config/config.php';
           <button hx-get="login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-2">Login</button>
           <button hx-get="home.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
           <hr class="mx-auto w-75 mb-3">
-          <button hx-get="categories.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-secondary w-100 rounded-pill text-capitalize text-white">I am a business</button>
+          <button hx-get="signup.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-secondary w-100 rounded-pill text-capitalize text-white">I am a business</button>
         </div>
       </div>
     </div>

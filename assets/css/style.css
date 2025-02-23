@@ -94,4 +94,29 @@ a {
   background-size: cover;
 }
 
+/* =======Service Section=========== */
+.service {
+  min-height: 100vh;
+}
+.service-tab {
+  border-color: #5c2751;
+  border-width: 3px;
+}
+.service-tab .nav-link {
+  color: #ffffff;
+}
+.service-tab .nav-link.active {
+  color: #ffffff;
+  background: #5c2751;
+  font-weight: 700;
+  border-color: #5c2751;
+}
+.service-tab-content {
+  padding-top: 1rem;
+}
+.service-map {
+  width: 100%;
+  height: 400px;
+}
+
 /*# sourceMappingURL=style.css.map */
