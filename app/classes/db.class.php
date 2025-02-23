@@ -2,10 +2,6 @@
 
 
 class Database {
-  private $db_host;
-  private $db_username;
-  private $db_password;
-  private $db_name;
   public $db_conn;
 
   public function __construct() {
