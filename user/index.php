@@ -35,10 +35,30 @@ $services = new Services();
   <section class="home">
     <div class="container py-3">
       <div class="row">
+
         <div class="col-12 mb-2">
           <div class="rounded rounded-3 bg-primary p-3 text-white">
-            <h2>Welcome Back!</h2>
-            <p class="fst-italic">@<?= $_SESSION['username'] ?></p>
+            <h3>Welcome Back, !<?=$_SESSION['name'];?></h3>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          <div id="homeCarousel" class="carousel slide rounded rounded-3" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner rounded rounded-3">
+              <div class="carousel-item active">
+                <img src="../assets/images/image1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/images/image1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/images/image1.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-12 mb-2">

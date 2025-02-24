@@ -32,6 +32,7 @@ class User extends Database {
       $_SESSION['user_type'] = 'user';
       $_SESSION['user_id'] = $user['user_id'];
       $_SESSION['username'] = $user['username'];
+      $_SESSION['name'] = $user['name'];
       $_SESSION['email'] = $user['email'];
 
       // Redirect or perform other actions after successful login
