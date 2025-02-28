@@ -38,7 +38,8 @@ $services = new Services();
 
         <div class="col-12 mb-2">
           <div class="rounded rounded-3 bg-primary p-3 text-white">
-            <h3>Welcome Back, !<?=$_SESSION['name'];?></h3>
+            <h3>Welcome Back!</h3>
+            <p class="lead">We have your services in one place</p>
           </div>
         </div>
         <div class="col-12 mb-2">
@@ -130,6 +131,26 @@ $services = new Services();
     </div>
   </div>
   <!-- End Of Floating Footer Navigation -->
+
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog vh-100 d-flex align-items-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="<?= $_ENV['SITE_URL'] ?>/user/logout.php" class="btn btn-primary">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Of Logout Modal -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

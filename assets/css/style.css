@@ -99,6 +99,7 @@ a {
 
 /* =======Service Section=========== */
 .service {
+  margin: 5rem auto;
   min-height: 100vh;
 }
 .service-tab {

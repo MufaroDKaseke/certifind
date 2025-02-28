@@ -8,7 +8,7 @@ require_once './app/config/config.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Certifind</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@ require_once './app/config/config.php';
           <button hx-get="./user/login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-2">Login</button>
           <button hx-get="./user/signup.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
           <hr class="mx-auto w-75 mb-3">
-          <button hx-get="" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-secondary w-100 rounded-pill text-capitalize text-white">I am a business</button>
+          <button hx-get="./provider/login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-light w-100 rounded-pill text-capitalize text-white">I am a business</button>
         </div>
       </div>
     </div>

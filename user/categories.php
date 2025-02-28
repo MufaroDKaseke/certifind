@@ -7,12 +7,12 @@ require_once '../app/config/config.php';
 
   <!-- Header -->
   <header class="header d-flex align-items-center justify-content-between">
-    <button class="header-back-btn btn">
+    <button class="header-back-btn btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
       <i class="bi bi-chevron-left"></i>
     </button>
     <h5 class="mb-0 text-center">Categories</h5>
-    <button class="header-options-btn btn">
-      <i class="bi bi-filter-right"></i>
+    <button class="header-options-btn btn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+      <i class="bi bi-box-arrow-right"></i>
     </button>
   </header>
   <!-- End Of Header -->
@@ -71,6 +71,27 @@ require_once '../app/config/config.php';
     </div>
   </div>
   <!-- End Of Floating Footer Navigation -->
+
+
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog vh-100 d-flex align-items-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="<?= $_ENV['SITE_URL'] ?>/user/logout.php" class="btn btn-primary">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Of Logout Modal -->
 
   <script>
     $(document).ready(function() {
