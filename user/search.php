@@ -38,7 +38,10 @@ $service = new Services();
           </form>
         </div>
         <div class="col-12 search-results mt-2">
-
+            <div class="text-center mt-4">
+            <i class="bi bi-info-circle" style="font-size: 2rem;"></i>
+            <p class="mt-2">Enter a search query to start searching.</p>
+            </div>
         </div>
       </div>
     </div>

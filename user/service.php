@@ -4,9 +4,11 @@ require_once '../app/config/config.php';
 require_once '../app/classes/db.class.php';
 require_once '../app/classes/user.class.php';
 require_once '../app/classes/services.class.php';
+require_once '../app/classes/reviews.class.php';
 
 $user = new User();
 $services = new Services();
+$reviews = new Reviews();
 ?>
 
 <body>
@@ -35,22 +37,27 @@ $services = new Services();
             <div class="rounded rounded-3 bg-primary p-3 text-white">
               <div class="mb-3">
                 <h3 class="text-capitalize"><?= $providerDetails['name'] ?></h3>
-                <div class="service-rating d-flex align-items-center">
-                  <?php
-                  $fullStars = floor($providerDetails['avg_rating']);
-                  $halfStar = ($providerDetails['avg_rating'] - $fullStars) >= 0.5 ? 1 : 0;
-                  $emptyStars = 5 - $fullStars - $halfStar;
+                <div class="service-rating d-flex align-items-center justify-content-between">
+                  <div>
+                    <?php
+                    $fullStars = floor($providerDetails['avg_rating']);
+                    $halfStar = ($providerDetails['avg_rating'] - $fullStars) >= 0.5 ? 1 : 0;
+                    $emptyStars = 5 - $fullStars - $halfStar;
 
-                  for ($i = 0; $i < $fullStars; $i++) {
-                    echo '<i class="bi bi-star-fill text-warning"></i>';
-                  }
-                  if ($halfStar) {
-                    echo '<i class="bi bi-star-half text-warning"></i>';
-                  }
-                  for ($i = 0; $i < $emptyStars; $i++) {
-                    echo '<i class="bi bi-star text-warning"></i>';
-                  }
-                  ?>
+                    for ($i = 0; $i < $fullStars; $i++) {
+                      echo '<i class="bi bi-star-fill text-warning"></i>';
+                    }
+                    if ($halfStar) {
+                      echo '<i class="bi bi-star-half text-warning"></i>';
+                    }
+                    for ($i = 0; $i < $emptyStars; $i++) {
+                      echo '<i class="bi bi-star text-warning"></i>';
+                    }
+                    ?>
+                  </div>
+                  <button class="btn btn-sm btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#leaveReviewModal">
+                    Rate Us
+                  </button>
                 </div>
               </div>
               <ul class="service-details nav flex-column mb-3">
@@ -102,7 +109,42 @@ $services = new Services();
                   </p>
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                  <p>Customer reviews will be displayed here.</p>
+                  <?php
+
+                  $serviceReviews = $reviews->getReviewsByProvider($providerDetails['provider_id']);
+
+                  if (!empty($serviceReviews)) {
+                    foreach ($serviceReviews as $review) {
+                      echo '<div class="review mb-3">';
+                      echo '<div class="review-header d-flex justify-content-between align-items-center">';
+                      echo '<h5 class="mb-0">user</h5>';
+                      echo '<div class="review-rating">';
+                      $fullStars = floor($review['rating']);
+                      $halfStar = ($review['rating'] - $fullStars) >= 0.5 ? 1 : 0;
+                      $emptyStars = 5 - $fullStars - $halfStar;
+
+                      for ($i = 0; $i < $fullStars; $i++) {
+                        echo '<i class="bi bi-star-fill text-warning"></i>';
+                      }
+                      if ($halfStar) {
+                        echo '<i class="bi bi-star-half text-warning"></i>';
+                      }
+                      for ($i = 0; $i < $emptyStars; $i++) {
+                        echo '<i class="bi bi-star text-warning"></i>';
+                      }
+                      echo '</div>';
+                      echo '</div>';
+                      echo '<div class="review-body">';
+                      echo '<p>' . htmlspecialchars($review['comment']) . '</p>';
+                      echo '</div>';
+                      echo '</div>';
+                      echo '<hr />';
+                    }
+                  } else {
+                    echo '<p>No reviews available.</p>';
+                  }
+
+                  ?>
                 </div>
                 <div class="tab-pane fade" id="hours" role="tabpanel" aria-labelledby="hours-tab">
                   <p>Service hours information.</p>
@@ -118,25 +160,62 @@ $services = new Services();
 
   ?>
 
+  <!-- Leave a Review Modal -->
+  <div class="modal fade" id="leaveReviewModal" tabindex="-1" aria-labelledby="leaveReviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog vh-100 d-flex align-items-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="leaveReviewModalLabel">Leave a Review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="leaveReviewForm" hx-post="<?= $_ENV['SITE_URL'] ?>/app/views/submit_review.php" hx-trigger="submit" hx-target="#reviews" hx-swap="outerHTML">
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating</label>
+              <div id="rating" class="star-rating d-flex align-items-center justify-content-around">
+                <b class="mx-2 text-secondary">1</b>
+                <i class="bi bi-star" data-value="1" style="font-size: 2rem;"></i>
+                <i class="bi bi-star" data-value="2" style="font-size: 2rem;"></i>
+                <i class="bi bi-star" data-value="3" style="font-size: 2rem;"></i>
+                <i class="bi bi-star" data-value="4" style="font-size: 2rem;"></i>
+                <i class="bi bi-star" data-value="5" style="font-size: 2rem;"></i>
+                <b class="mx-2 text-secondary">5</b>
+              </div>
+              <input type="hidden" name="rating" id="ratingInput" value="0">
+            </div>
+            <div class="mb-3">
+              <label for="comment" class="form-label">Comment</label>
+              <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Leave your comment here" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Leave a Review Modal -->
 
   <script>
     $(document).ready(function() {
-      var $mapContainer = $(".service-map");
+      const stars = document.querySelectorAll('.star-rating .bi-star');
+      const ratingInput = document.getElementById('ratingInput');
 
-      if ($mapContainer.length) {
-        var location = [28.6323397, -20.1803634]; // Example: New York City
-        var map = L.map($mapContainer[0]).setView(location, 12);
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const value = this.getAttribute('data-value');
+          ratingInput.value = value;
 
-        // Add OpenStreetMap tiles
-        /* L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map); */
+          stars.forEach(s => {
+            s.classList.remove('bi-star-fill');
+            s.classList.add('bi-star');
+          });
 
-        // Add a marker
-        L.marker(location).addTo(map)
-          .bindPopup('Business Name')
-          .openPopup();
-      }
+          for (let i = 0; i < value; i++) {
+            stars[i].classList.remove('bi-star');
+            stars[i].classList.add('bi-star-fill');
+          }
+        });
+      });
     });
   </script>
 

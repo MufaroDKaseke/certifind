@@ -18,7 +18,7 @@ if (isset($_GET['q'])) {
     <?php
     foreach ($searchResults as $provider) {
     ?>
-      <div class="listing col-12 mb-2">
+      <div class="listing col-12 mb-2" hx-get="<?= $_ENV['SITE_URL'] ?>/user/service.php?providerId=<?= $provider['provider_id'] ?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
         <div class="rounded rounded-3 bg-secondary p-3 text-white d-flex align-items-center justify-content-between">
           <div>
             <h3 class="listing-name mb-0"><?= $provider['name']; ?></h3>

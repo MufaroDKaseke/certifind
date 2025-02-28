@@ -95,15 +95,4 @@ class Services extends Database {
     $this->close();
     return $services;
   }
-
-  // Give a service a rating
-  public function newReview($providerId, $comment, $rating) {
-    $this->connect();
-
-    $stmt = mysqli_prepare($this->db_conn, "INSERT user_id, provider_id, rating, comment INTO reviews VALUES(?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, 'iiis', $_SESSION['user_id'], $providerId, $rating, $comment);
-    $result = mysqli_stmt_execute($stmt);
-    $this->close();
-    return $result;
-  }
 }
