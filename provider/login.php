@@ -48,5 +48,4 @@ require_once '../app/config/config.php';
       </div>
     </div>
   </section>
-  <form action=""></form>
 </body>

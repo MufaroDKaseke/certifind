@@ -1,11 +1,13 @@
 <?php
 
+// Start Session
+session_start(['cookie_lifetime' => 21600]);
 
 class Provider extends Database {
 
-  public function __function() {
+  public function __construct() {
     if (isset($_POST['action']) && $_POST['action'] === 'login') {
-      $this->login($_POST['username'], $_POST['password']);
+      $this->login($_POST['email'], $_POST['password']);
     } else {
       if (!isset($_SESSION['user_status']) || !$_SESSION['user_status']) {
         $this->errorLogin('Not logged in');
@@ -19,8 +21,8 @@ class Provider extends Database {
   public function login($username, $password) {
     $this->connect();
 
-    $stmt = mysqli_prepare($this->db_conn, 'SELECT * FROM providers WHERE username = ?');
-    mysqli_stmt_bind_param($stmt, 's', $username);
+    $stmt = mysqli_prepare($this->db_conn, 'SELECT * FROM providers WHERE username = ? OR email = ?');
+    mysqli_stmt_bind_param($stmt, 'ss', $username, $username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $user = mysqli_fetch_assoc($result);
@@ -59,7 +61,7 @@ class Provider extends Database {
   public function getUserDetails() {
     $this->connect();
 
-    $stmt = mysqli_prepare($this->db_conn, 'SELECT * FROM providers WHERE id = ?');
+    $stmt = mysqli_prepare($this->db_conn, 'SELECT * FROM providers WHERE provider_id = ?');
     mysqli_stmt_bind_param($stmt, 's', $_SESSION['provider_id']);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
@@ -71,7 +73,4 @@ class Provider extends Database {
       return false;
     }
   }
-
-  // Get my verification request
-  // 
 }
