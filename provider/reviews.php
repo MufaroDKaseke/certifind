@@ -18,7 +18,7 @@ $serviceReviews = $reviews->getReviewsByProvider($_SESSION['provider_id']);
     <button class="header-back-btn btn btn-sm" hx-get="<?= $_ENV['SITE_URL'] ?>/provider/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
       <i class="bi bi-chevron-left"></i>
     </button>
-    <h5 class="mb-0 text-center">Profile</h5>
+    <h5 class="mb-0 text-center">Reviews</h5>
     <button class="header-options-btn btn btn-sm" data-bs-toggle="modal" data-bs-target="#logoutModal">
       <i class="bi bi-box-arrow-right"></i>
     </button>
