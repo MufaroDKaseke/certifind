@@ -46,7 +46,7 @@ require_once '../app/config/config.php';
 
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100 d-flex justify-content-center">
+  <div class="footer w-100 d-flex justify-content-center shadow">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
