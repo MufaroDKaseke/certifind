@@ -28,10 +28,172 @@ $services = new Services();
 
 <body>
 
-  <p>Osadaklk</p>
+  <section class="home-provider">
+    <div class="container">
+      <div class="row">
+        <!-- Provider Status Card -->
+        <div class="col-12 my-3">
+          <div class="rounded rounded-3 bg-primary p-3 text-white shadow">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <span class="bg-white text-primary px-2 py-1 rounded-pill small fw-semibold mb-2 d-inline-block">
+                  <i class="bi bi-shield-check me-1"></i>Service Provider
+                </span>
+                <h3 class="mb-1 fw-bold">Riverside Hospital</h3>
+                <p class="mb-2 fw-light">Healthcare Services</p>
+                <div class="small">
+                  <i class="bi bi-geo-alt me-1"></i>
+                  <span class="fw-medium">3700 Main St, Riverside</span>
+                </div>
+              </div>
+              <div class="text-end">
+                <div class="bg-success text-white rounded-pill px-3 py-1 small fw-semibold">
+                  <i class="bi bi-check-circle me-1"></i>Verified
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="col-12 mb-4">
+          <div class="row g-2">
+            <div class="col-4">
+              <div class="card border-0 bg-secondary text-white shadow-sm">
+                <div class="card-body p-3 text-center">
+                  <i class="bi bi-star-fill text-warning mb-2 fs-4"></i>
+                  <div class="fw-bold h3 mb-0">4.8</div>
+                  <div class="small fw-light">Rating</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card border-0 bg-secondary text-white shadow-sm">
+                <div class="card-body p-3 text-center">
+                  <i class="bi bi-chat-text-fill text-warning mb-2 fs-4"></i>
+                  <div class="fw-bold h3 mb-0">127</div>
+                  <div class="small fw-light">Reviews</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card border-0 bg-secondary text-white shadow-sm">
+                <div class="card-body p-3 text-center">
+                  <i class="bi bi-graph-up-arrow text-warning mb-2 fs-4"></i>
+                  <div class="fw-bold h3 mb-0">542</div>
+                  <div class="small fw-light">Views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="col-12 mb-4">
+          <h6 class="fw-bold mb-3">Quick Actions</h6>
+          <div class="row g-2">
+            <div class="col-6">
+              <div class="card border-0 bg-light shadow-sm h-100">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-pencil-square text-primary fs-4 me-2"></i>
+                    <div>
+                      <h6 class="mb-0 fw-semibold">Update Profile</h6>
+                      <small class="text-muted">Edit business details</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card border-0 bg-light shadow-sm h-100">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-chat-square-text text-primary fs-4 me-2"></i>
+                    <div>
+                      <h6 class="mb-0 fw-semibold">Reviews</h6>
+                      <small class="text-muted">View & respond</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Hours & Contact -->
+        <div class="col-12">
+          <h6 class="fw-bold mb-3">Business Information</h6>
+
+          <!-- Hours Card -->
+          <div class="card mb-3 border-0 shadow-sm">
+            <div class="card-header bg-secondary text-white py-2">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-clock fs-5 me-2"></i>
+                <h6 class="mb-0">Business Hours</h6>
+                <span class="badge bg-success ms-auto">Open Now</span>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex justify-content-between py-2">
+                  <span class="fw-medium">Monday - Friday</span>
+                  <span class="text-muted">8:00 AM - 5:00 PM</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between py-2">
+                  <span class="fw-medium">Saturday</span>
+                  <span class="text-muted">9:00 AM - 2:00 PM</span>
+                </div>
+                <div class="list-group-item d-flex justify-content-between py-2">
+                  <span class="fw-medium">Sunday</span>
+                  <span class="text-muted">Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-secondary text-white py-2">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-info-circle fs-5 me-2"></i>
+                <h6 class="mb-0">Contact Information</h6>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex align-items-center py-2">
+                  <i class="bi bi-telephone text-primary me-3"></i>
+                  <div>
+                    <div class="fw-medium">Phone Number</div>
+                    <div class="text-muted small">+1 (951) 555-0123</div>
+                  </div>
+                </div>
+                <div class="list-group-item d-flex align-items-center py-2">
+                  <i class="bi bi-envelope text-primary me-3"></i>
+                  <div>
+                    <div class="fw-medium">Email Address</div>
+                    <div class="text-muted small">contact@riverside.hospital</div>
+                  </div>
+                </div>
+                <div class="list-group-item d-flex align-items-center py-2">
+                  <i class="bi bi-geo-alt text-primary me-3"></i>
+                  <div>
+                    <div class="fw-medium">Location</div>
+                    <div class="text-muted small">3700 Main St, Riverside, CA 92501</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100 d-flex justify-content-center">
+  <div class="footer w-100 d-flex justify-content-center shadow">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-primary">
       <div class="col-3 text-center">
         <button class="btn active" hx-get="<?= $_ENV['SITE_URL'] ?>/provider/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
