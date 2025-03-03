@@ -17,7 +17,7 @@ require_once '../app/config/config.php';
   </header>
   <!-- End Of Header -->
 
-  <section class="categories">
+  <section class="categories animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row">
         <div class="col-12 mb-3">
@@ -46,7 +46,7 @@ require_once '../app/config/config.php';
 
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100">
+  <div class="footer w-100 d-flex justify-content-center">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">

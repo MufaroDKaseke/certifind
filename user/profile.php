@@ -22,7 +22,7 @@ $userDetails = $user->getUserDetails();
   </header>
   <!-- End Of Header -->
 
-  <section class="profile">
+  <section class="profile animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row">
         <div class="col-12 mb-3">
@@ -33,20 +33,20 @@ $userDetails = $user->getUserDetails();
             </div>
             <form hx-post="<?= $_ENV['SITE_URL'] ?>/user/view/update_profile.php" hx-target="#saveChangesBtn" hx-swap="outerHTML">
               <div class="mb-3">
-              <label for="username" class="form-label fw-semibold">Username</label>
-              <input type="text" class="form-control" id="username" name="username" value="<?= $userDetails['username'] ?>" readonly>
+                <label for="username" class="form-label fw-semibold">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="<?= $userDetails['username'] ?>" readonly>
               </div>
               <div class="mb-3">
-              <label for="email" class="form-label fw-semibold">Email</label>
-              <input type="email" class="form-control" id="email" name="email" value="<?= $userDetails['email'] ?>" readonly>
+                <label for="email" class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<?= $userDetails['email'] ?>" readonly>
               </div>
               <div class="mb-3">
-              <label for="phone" class="form-label fw-semibold">Phone</label>
-              <input type="text" class="form-control" id="phone" name="phone" value="<?= $userDetails['phone'] ?>" readonly>
+                <label for="phone" class="form-label fw-semibold">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="<?= $userDetails['phone'] ?>" readonly>
               </div>
               <div class="mb-3">
-              <label for="address" class="form-label fw-semibold">Address</label>
-              <input type="text" class="form-control" id="address" name="address" value="123 Main St, Anytown, USA" readonly>
+                <label for="address" class="form-label fw-semibold">Address</label>
+                <input type="text" class="form-control" id="address" name="address" value="123 Main St, Anytown, USA" readonly>
               </div>
               <button id="saveChangesBtn" type="submit" class="btn btn-secondary">Save Changes</button>
               <button id="editProfileBtn" type="button" class="btn btn-primary">Edit Profile</button>
@@ -58,7 +58,7 @@ $userDetails = $user->getUserDetails();
   </section>
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100">
+  <div class="footer w-100 d-flex justify-content-center">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">

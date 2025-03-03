@@ -36,7 +36,7 @@ $service = new Services();
   </header>
   <!-- End Of Header -->
 
-  <section class="listings">
+  <section class="listings animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row">
         <?php
@@ -48,7 +48,7 @@ $service = new Services();
           if ($nearestServicesInCategory && !empty($nearestServicesInCategory)) {
         ?>
             <div class="col-12">
-              <p class="text-center text-secondary fw-semibold"><?= count($nearestServicesInCategory) ?> services in <span class="text-capitalize"><?=$_GET['category']?></span></p>
+              <p class="text-center text-secondary fw-semibold"><?= count($nearestServicesInCategory) ?> services in <span class="text-capitalize"><?= $_GET['category'] ?></span></p>
             </div>
             <?php
             foreach ($nearestServicesInCategory as $provider) {
@@ -90,7 +90,7 @@ $service = new Services();
               <i class="bi bi-info-circle fs-1 text-secondary"></i>
               <p class="text-secondary fw-semibold">No services available in this category yet</p>
             </div>
-            <?php
+        <?php
           }
         }
         ?>
@@ -100,7 +100,7 @@ $service = new Services();
 
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100">
+  <div class="footer w-100 d-flex justify-content-center">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">

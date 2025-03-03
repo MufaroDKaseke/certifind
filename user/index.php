@@ -30,81 +30,164 @@ $services = new Services();
 
 <body>
 
-  <section class="home">
+  <section class="home animate__animated animate__fadeIn animate__fast">
     <div class="container py-3">
       <div class="row">
+        <!-- Welcome Card -->
+        <div class="col-12 mb-3">
+          <div class="rounded rounded-3 bg-primary p-3 text-white shadow">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h3 class="mb-1 fw-bold">Welcome Back!</h3>
+                <p class="mb-0 fw-light">Find verified services near you</p>
+              </div>
+              <div class="text-center">
+                <i class="bi bi-geo-alt fs-1"></i>
+                <div class="small fw-semibold">Riverside, CA</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <div class="col-12 mb-2">
-          <div class="rounded rounded-3 bg-primary p-3 text-white">
-            <h3>Welcome Back!</h3>
-            <p class="lead">We have your services in one place</p>
+        <!-- Search Bar -->
+        <div class="col-12 mb-4">
+          <div class="input-group shadow-sm">
+            <span class="input-group-text bg-white border-end-0">
+              <i class="bi bi-search text-primary"></i>
+            </span>
+            <input type="search" class="form-control border-start-0 ps-0 py-2"
+              placeholder="Search for verified services...">
           </div>
         </div>
-        <div class="col-12 mb-2">
-          <div id="homeCarousel" class="carousel slide rounded rounded-3" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner rounded rounded-3">
-              <div class="carousel-item active">
-                <img src="../assets/images/image1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="../assets/images/image1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="../assets/images/image1.jpg" class="d-block w-100" alt="...">
+
+        <!-- Featured Categories -->
+        <div class="col-12 mb-4">
+          <h6 class="fw-bold mb-3 text-dark">Browse Categories</h6>
+          <div class="row g-3">
+            <div class="col-3">
+              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=health" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                <div class="card-body p-2 text-center">
+                  <i class="bi bi-hospital text-white fs-4"></i>
+                  <div class="small mt-1 fw-medium text-white">Healthcare</div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-12 mb-2">
-          <div class="rounded rounded-3 bg-secondary p-3 text-white d-flex align-items-center justify-content-between">
-            <div>
-              <h3 class="mb-0">Some Business</h3>
-              <p class="mb-0 fw-light">3 McNeillie Drive, Riverside</p>
-            </div>
-            <div class="p-3">
-              <i class="bi bi-patch-check-fill fs-1"></i>
-            </div>
-          </div>
-        </div>
-        <div class="listing col-12 mb-2">
-          <div class="rounded rounded-3 bg-secondary p-3 text-white d-flex align-items-center justify-content-between">
-            <div>
-              <h3 class="listing-name mb-0">Some listing</h3>
-              <p class="listing-address mb-0 fw-light">3 McNeillie Drive, Riverside</p>
-              <div class="listing-rating d-flex align-items-center">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-half text-warning"></i>
+            <div class="col-3">
+              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=emergency" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                <div class="card-body p-2 text-center">
+                  <i class="bi bi-shield-check text-white fs-4"></i>
+                  <div class="small mt-1 fw-medium text-white">Emergency</div>
+                </div>
               </div>
             </div>
-            <div class="listing-verification p-3">
-              <i class="bi bi-patch-check-fill fs-1"></i>
+            <div class="col-3">
+              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=education" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                <div class="card-body p-2 text-center">
+                  <i class="bi bi-mortarboard text-white fs-4"></i>
+                  <div class="small mt-1 fw-medium text-white">Education</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=legal" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                <div class="card-body p-2 text-center">
+                  <i class="bi bi-bank text-white fs-4"></i>
+                  <div class="small mt-1 fw-medium text-white">Legal</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Nearby Services -->
+        <div class="col-12 mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0 text-dark">Nearby Verified Services</h6>
+            <a href="#" class="text-primary text-decoration-none small fw-semibold">View All</a>
+          </div>
+
+          <!-- Service Card -->
+          <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow">
+            <div class="card-body p-3">
+              <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                  <div class="bg-light rounded-3 p-2">
+                    <i class="bi bi-hospital text-primary fs-4"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1 ms-3 text-white">
+                  <h6 class="mb-1 fw-semibold">Riverside Community Hospital</h6>
+                  <div class="small fw-light fw-medium">
+                    <i class="bi bi-geo-alt me-1"></i>
+                    2.5 km away
+                  </div>
+                  <div class="small mt-1">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <span class="ms-1 fw-medium">4.8</span>
+                    <span class="fw-light">(240 reviews)</span>
+                  </div>
+                </div>
+                <div class="flex-shrink-0 ms-2">
+                  <i class="bi bi-patch-check-fill text-primary fs-4"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Card -->
+          <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow">
+            <div class="card-body p-3">
+              <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                  <div class="bg-light rounded-3 p-2">
+                    <i class="bi bi-shield-check text-primary fs-4"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1 ms-3 text-white">
+                  <h6 class="mb-1 fw-semibold">Fire Station #1</h6>
+                  <div class="small fw-light fw-medium">
+                    <i class="bi bi-geo-alt me-1"></i>
+                    1.2 km away
+                  </div>
+                  <div class="small mt-1">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <span class="ms-1 fw-medium">4.9</span>
+                    <span class="fw-light">(186 reviews)</span>
+                  </div>
+                </div>
+                <div class="flex-shrink-0 ms-2">
+                  <i class="bi bi-patch-check-fill text-primary fs-4"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Searches -->
         <div class="col-12">
-          <form action="">
-            <div class="input-group rounded-pill border border-2 border-primary">
-              <input type="search" name="q" id="q" class="form-control form-control-lg rounded-pill border border-end-0" placeholder="Search business...">
-              <button type="submit" class="btn btn-lg btn-primary rounded-pill px-3">
-                <i class="bi bi-search"></i>
-              </button>
+          <h6 class="fw-bold mb-3 text-dark">Recent Searches</h6>
+          <div class="d-flex flex-wrap gap-2">
+            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm">
+              <i class="bi bi-clock-history me-1 text-primary"></i>
+              Emergency Room
             </div>
-          </form>
+            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm">
+              <i class="bi bi-clock-history me-1 text-primary"></i>
+              Police Station
+            </div>
+            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm">
+              <i class="bi bi-clock-history me-1 text-primary"></i>
+              High School
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100">
+  <div class="footer w-100 d-flex justify-content-center">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
         <button class="btn active" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
@@ -158,11 +241,24 @@ $services = new Services();
     $(document).ready(function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-          function() {
-            console.log("Location access granted.");
+          function(position) {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
+
+            // Update the link with coordinates
+
+
+            $('.home-category-card').each(function() {
+              let $link = $(this); // Change this to your actual link ID
+              let baseUrl = $link.attr('hx-get');
+              let newUrl = baseUrl + '&lat=' + latitude + '&long=' + longitude;
+              $link.attr('hx-get', newUrl);
+            });
           },
           function(error) {
-            console.warn("Error: " + error.message);
+            console.error('Error occurred. Error code: ' + error.code);
           }
         );
       } else {

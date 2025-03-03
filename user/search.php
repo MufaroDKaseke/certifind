@@ -23,7 +23,7 @@ $service = new Services();
   </header>
   <!-- End Of Header -->
 
-  <section class="search">
+  <section class="search animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -38,17 +38,17 @@ $service = new Services();
           </form>
         </div>
         <div class="col-12 search-results mt-2">
-            <div class="text-center mt-4">
+          <div class="text-center mt-4">
             <i class="bi bi-info-circle" style="font-size: 2rem;"></i>
             <p class="mt-2">Enter a search query to start searching.</p>
-            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Floating Footer Navigation -->
-  <div class="footer w-100">
+  <div class="footer w-100 d-flex justify-content-center">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-secondary">
       <div class="col-3 text-center">
         <button class="btn" hx-get="<?= $_ENV['SITE_URL'] ?>/user/" hx-trigger="click" hx-target="body" hx-swap="outerHTML">

@@ -30,7 +30,7 @@ $reviews = new Reviews();
   if (isset($_GET['providerId'])) {
     $providerDetails = $services->getServiceByProviderId($_GET['providerId']);
   ?>
-    <section class="service">
+    <section class="service animate__animated animate__fadeIn animate__fast">
       <div class="container-fluid p-0">
         <div class="row">
           <div class="col-12">
