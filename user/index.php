@@ -43,7 +43,7 @@ $services = new Services();
               </div>
               <div class="text-center">
                 <i class="bi bi-geo-alt fs-1"></i>
-                <div class="small fw-semibold">Riverside, CA</div>
+                <div id="location_name" class="small fw-semibold">Riverside, CA</div>
               </div>
             </div>
           </div>
@@ -62,40 +62,27 @@ $services = new Services();
 
         <!-- Featured Categories -->
         <div class="col-12 mb-4">
-          <h6 class="fw-bold mb-3 text-dark">Browse Categories</h6>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold text-dark">Browse Categories</h6>
+            <a href="#" class="text-primary text-decoration-none small fw-semibold">View All</a>
+          </div>
           <div class="row g-3">
-            <div class="col-3">
-              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=health" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
-                <div class="card-body p-2 text-center">
-                  <i class="bi bi-hospital text-white fs-4"></i>
-                  <div class="small mt-1 fw-medium text-white">Healthcare</div>
+            <?php
+
+            foreach (array_slice(PROVIDER_CATEGORIES, 0, 4) as $category) {
+            ?>
+              <div class="col-3">
+                <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=<?= $category['name'] ?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                  <div class="card-body p-2 text-center">
+                    <i class="<?= $category['icon'] ?> text-white fs-4"></i>
+                    <div class="small mt-1 fw-medium text-white"><?= $category['display_name'] ?></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-3">
-              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=emergency" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
-                <div class="card-body p-2 text-center">
-                  <i class="bi bi-shield-check text-white fs-4"></i>
-                  <div class="small mt-1 fw-medium text-white">Emergency</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=education" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
-                <div class="card-body p-2 text-center">
-                  <i class="bi bi-mortarboard text-white fs-4"></i>
-                  <div class="small mt-1 fw-medium text-white">Education</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=legal" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
-                <div class="card-body p-2 text-center">
-                  <i class="bi bi-bank text-white fs-4"></i>
-                  <div class="small mt-1 fw-medium text-white">Legal</div>
-                </div>
-              </div>
-            </div>
+            <?php
+            }
+            ?>
+
           </div>
         </div>
 
@@ -247,9 +234,30 @@ $services = new Services();
 
             console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
 
-            // Update the link with coordinates
+            // Update the location name
+            // Make AJAX call to Nominatim
+            $.ajax({
+              url: `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+              method: 'GET',
+              beforeSend: function() {
+                $('#location_name').html('<small>Finding location...</small>');
+              },
+              success: function(response) {
+                let location = '';
+                if (response.address) {
+                  location = response.address.suburb || response.address.city || response.address.town;
+                  if (response.address.state) {
+                    location += `, ${response.address.state}`;
+                  }
+                }
+                $('#location_name').text(location || 'Location not found');
+              },
+              error: function() {
+                $('#location_name').text('Location unavailable');
+              }
+            });
 
-
+            // Update the links with coordinates
             $('.home-category-card').each(function() {
               let $link = $(this); // Change this to your actual link ID
               let baseUrl = $link.attr('hx-get');

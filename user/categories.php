@@ -19,27 +19,21 @@ require_once '../app/config/config.php';
 
   <section class="categories animate__animated animate__fadeIn animate__fast">
     <div class="container">
-      <div class="row">
-        <div class="col-12 mb-3">
-          <a hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=education" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="categories-single rounded rounded-3 p-3 text-white" style="background-image: linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url('https://www.bathecho.co.uk/uploads/2021/12/emergency-service-vehicles-partnership-cred.jpg')">
-            <h3 class="mb-0">Education</h3>
-          </a>
-        </div>
-        <div class="col-12 mb-3">
-          <a hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=health" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="categories-single rounded rounded-3 p-3 text-white" style="background-image: linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url('https://media-assets.stryker.com/is/image/stryker/ProCare-service-techs-800x533?$max_width_1440$')">
-            <h3 class="mb-0">Health</h3>
-          </a>
-        </div>
-        <div class="col-12 mb-3">
-          <a hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=fire" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="categories-single rounded rounded-3 p-3 text-white" style="background-image: linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url('https://media-assets.stryker.com/is/image/stryker/ProCare-service-techs-800x533?$max_width_1440$')">
-            <h3 class="mb-0">Fire Departments</h3>
-          </a>
-        </div>
-        <div class="col-12 mb-3">
-          <a hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=police" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="categories-single rounded rounded-3 p-3 text-white" style="background-image: linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url('https://media-assets.stryker.com/is/image/stryker/ProCare-service-techs-800x533?$max_width_1440$')">
-            <h3 class="mb-0">Police Departments</h3>
-          </a>
-        </div>
+      <div class="row g-3">
+        <?php
+          foreach (PROVIDER_CATEGORIES as $category) {
+            ?>
+            <div class="col-3">
+              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=<?= $category['name']?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                <div class="card-body p-2 text-center">
+                  <i class="<?= $category['icon'] ?> text-white fs-4"></i>
+                  <div class="small mt-1 fw-medium text-white"><?= $category['display_name']?></div>
+                </div>
+              </div>
+            </div>
+            <?php
+          }
+        ?>
       </div>
     </div>
   </section>
