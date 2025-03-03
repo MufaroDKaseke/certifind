@@ -48,7 +48,39 @@ class Services extends Database {
     $this->close();
     return $service;
   }
+
   // Get nearest services
+  public function getNearestServices($userLat, $userLong, $limit = 20) {
+    $this->connect();
+
+    $stmt = mysqli_prepare($this->db_conn, "SELECT p.provider_id, 
+                            p.name, 
+                            p.category, 
+                            p.location, 
+                            p.primary_email, 
+                            p.verified, 
+                            p.address, 
+                            COALESCE(ROUND(AVG(r.rating), 1), 0) AS avg_rating, 
+                            ROUND((6371 * ACOS(COS(RADIANS(?)) * COS(RADIANS(SUBSTRING_INDEX(p.location, ',', 1))) 
+                            * COS(RADIANS(SUBSTRING_INDEX(p.location, ',', -1)) - RADIANS(?)) 
+                            + SIN(RADIANS(?)) * SIN(RADIANS(SUBSTRING_INDEX(p.location, ',', 1))))), 2) 
+                            AS distance 
+                        FROM providers p
+                        LEFT JOIN reviews r ON p.provider_id = r.provider_id 
+                        GROUP BY p.provider_id, p.name, p.category, p.location, p.primary_email, 
+                            p.verified, p.address 
+                        ORDER BY distance
+                        LIMIT ?;
+                        ");
+
+    mysqli_stmt_bind_param($stmt, 'dddd', $userLat, $userLong, $userLat, $limit);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $services = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $this->close();
+    return $services;
+  }
   // Get services by category
   public function getServicesByCategory($category) {
     $this->connect();

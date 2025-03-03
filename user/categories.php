@@ -19,13 +19,13 @@ require_once '../app/config/config.php';
 
   <section class="categories animate__animated animate__fadeIn animate__fast">
     <div class="container">
-      <div class="row g-3">
+      <div class="row g-2">
         <?php
           foreach (PROVIDER_CATEGORIES as $category) {
             ?>
             <div class="col-3">
-              <div class="home-category-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=<?= $category['name']?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
-                <div class="card-body p-2 text-center">
+              <div class="categories-card card h-100 border-0 bg-secondary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/category.php?category=<?= $category['name']?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+                <div class="card-body py-2 px-1 text-center">
                   <i class="<?= $category['icon'] ?> text-white fs-4"></i>
                   <div class="small mt-1 fw-medium text-white"><?= $category['display_name']?></div>
                 </div>
@@ -98,9 +98,7 @@ require_once '../app/config/config.php';
             console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
 
             // Update the link with coordinates
-
-
-            $('.categories-single').each(function() {
+            $('.categories-card').each(function() {
               let $link = $(this); // Change this to your actual link ID
               let baseUrl = $link.attr('hx-get');
               let newUrl = baseUrl + '&lat=' + latitude + '&long=' + longitude;

@@ -43,7 +43,7 @@ $services = new Services();
               </div>
               <div class="text-center">
                 <i class="bi bi-geo-alt fs-1"></i>
-                <div id="location_name" class="small fw-semibold">Riverside, CA</div>
+                <div id="location_name" class="small fw-semibold"></div>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ $services = new Services();
         <div class="col-12 mb-4">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-bold text-dark">Browse Categories</h6>
-            <a href="#" class="text-primary text-decoration-none small fw-semibold">View All</a>
+            <a class="text-primary text-decoration-none small fw-semibold" hx-get="<?= $_ENV['SITE_URL'] ?>/user/categories.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML">View All</a>
           </div>
           <div class="row g-3">
             <?php
@@ -90,39 +90,14 @@ $services = new Services();
         <div class="col-12 mb-4">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-bold mb-0 text-dark">Nearby Verified Services</h6>
-            <a href="#" class="text-primary text-decoration-none small fw-semibold">View All</a>
+            <a href="<?= $_ENV['SITE_URL'] ?>/user/categories.php" class="text-primary text-decoration-none small fw-semibold">View All</a>
           </div>
 
-          <!-- Service Card -->
-          <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow">
-            <div class="card-body p-3">
-              <div class="d-flex align-items-center">
-                <div class="flex-shrink-0">
-                  <div class="bg-light rounded-3 p-2">
-                    <i class="bi bi-hospital text-primary fs-4"></i>
-                  </div>
-                </div>
-                <div class="flex-grow-1 ms-3 text-white">
-                  <h6 class="mb-1 fw-semibold">Riverside Community Hospital</h6>
-                  <div class="small fw-light fw-medium">
-                    <i class="bi bi-geo-alt me-1"></i>
-                    2.5 km away
-                  </div>
-                  <div class="small mt-1">
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <span class="ms-1 fw-medium">4.8</span>
-                    <span class="fw-light">(240 reviews)</span>
-                  </div>
-                </div>
-                <div class="flex-shrink-0 ms-2">
-                  <i class="bi bi-patch-check-fill text-primary fs-4"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- Display 2 most nearest services -->
+          <div id="home_nearest_services"></div>
 
           <!-- Service Card -->
-          <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow">
+          <!-- <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow">
             <div class="card-body p-3">
               <div class="d-flex align-items-center">
                 <div class="flex-shrink-0">
@@ -147,22 +122,22 @@ $services = new Services();
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Recent Searches -->
         <div class="col-12">
           <h6 class="fw-bold mb-3 text-dark">Recent Searches</h6>
           <div class="d-flex flex-wrap gap-2">
-            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm">
+            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm" hx-get="<?= $_ENV['SITE_URL'] ?>/user/search.php?q=emergency+room" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
               <i class="bi bi-clock-history me-1 text-primary"></i>
               Emergency Room
             </div>
-            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm">
+            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm" hx-get="<?= $_ENV['SITE_URL'] ?>/user/search.php?q=police+station" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
               <i class="bi bi-clock-history me-1 text-primary"></i>
               Police Station
             </div>
-            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm">
+            <div class="bg-light rounded-pill px-3 py-2 small fw-medium shadow-sm" hx-get="<?= $_ENV['SITE_URL'] ?>/user/search.php?q=police+station" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
               <i class="bi bi-clock-history me-1 text-primary"></i>
               High School
             </div>
@@ -245,15 +220,27 @@ $services = new Services();
               success: function(response) {
                 let location = '';
                 if (response.address) {
-                  location = response.address.suburb || response.address.city || response.address.town;
-                  if (response.address.state) {
-                    location += `, ${response.address.state}`;
-                  }
+                  location = response.address.suburb + ', ' + response.address.city;
                 }
                 $('#location_name').text(location || 'Location not found');
               },
               error: function() {
                 $('#location_name').text('Location unavailable');
+              }
+            });
+
+            // Make AJAX call to get 2 most nearest services
+            $.ajax({
+              url: `<?= $_ENV['SITE_URL'] ?>/app/views/nearest_services.PHP?lat=${latitude}&long=${longitude}&limit=2`,
+              method: 'GET',
+              beforeSend: function() {
+                $('#home_nearest_services').html('<div class="text-center"><small>Loading nearest services...</small></div>');
+              },
+              success: function(response) {
+                $('#home_nearest_services').html(response);
+              },
+              error: function() {
+                $('#home_nearest_services').html('<div class="text-center"><small>Unable to load services</small></div>');
               }
             });
 
