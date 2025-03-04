@@ -36,7 +36,7 @@ require_once './app/config/config.php';
           <button hx-get="./user/login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-primary w-100 bg-white rounded-pill mb-2">Login</button>
           <button hx-get="./user/signup.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-secondary w-100 rounded-pill">Signup</button>
           <hr class="mx-auto w-75 mb-3">
-          <button hx-get="./provider/login.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-light w-100 rounded-pill text-capitalize text-white">I am a business</button>
+          <button hx-get="./register.php" hx-trigger="click" hx-target="body" hx-swap="outerHTML" class="btn btn-outline-light w-100 rounded-pill text-capitalize text-white">I am a business</button>
         </div>
       </div>
     </div>

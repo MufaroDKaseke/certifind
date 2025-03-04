@@ -15,7 +15,7 @@ if (isset($_GET['lat']) && isset($_GET['long'])) {
   if ($nearestServices && !empty($nearestServices)) {
     foreach ($nearestServices as $service) {
 ?>
-      <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/service.php?provider_id=<?= $service['provider_id']?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
+      <div class="card mb-3 border-0 bg-primary shadow-sm hover-shadow" hx-get="<?= $_ENV['SITE_URL'] ?>/user/service.php?providerId=<?= $service['provider_id']?>" hx-trigger="click" hx-target="body" hx-swap="outerHTML">
         <div class="card-body p-3">
           <div class="d-flex align-items-center">
             <div class="flex-shrink-0">
