@@ -23,7 +23,7 @@ require_once './app/config/config.php';
 
 </head>
 
-<body>
+<body class="bg-primary">
 
   <section class="welcome">
     <div class="container animate__animated animate__zoomIn animate__fast">

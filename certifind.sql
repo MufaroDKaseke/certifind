@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 12:04 AM
+-- Generation Time: Mar 04, 2025 at 12:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,13 @@ CREATE TABLE `providers` (
   `primary_email` varchar(255) NOT NULL,
   `website` varchar(255) NOT NULL,
   `verified` tinyint(1) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `about` varchar(255) NOT NULL,
+  `street` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `weekday_hours` varchar(255) NOT NULL,
+  `saturday_hours` varchar(255) NOT NULL,
+  `sunday_hours` varchar(255) NOT NULL,
   `verified_on` datetime DEFAULT NULL,
   `updated_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_on` datetime NOT NULL DEFAULT current_timestamp()
@@ -49,10 +55,10 @@ CREATE TABLE `providers` (
 -- Dumping data for table `providers`
 --
 
-INSERT INTO `providers` (`provider_id`, `name`, `email`, `username`, `password`, `category`, `location`, `phone`, `primary_email`, `website`, `verified`, `address`, `verified_on`, `updated_on`, `created_on`) VALUES
-(1, 'Momoservice', 'momo@momo.co.zw', 'momo', 'momo', 'momo', '-20.167634, 28.649736\n\n', 4920348, 'momo@momo.co.zw', 'https://momo.co.zw', 0, '13 Momo Street,\r\nSkjsdkj\r\ndslk', NULL, '2025-02-23 09:18:23', '2025-02-23 07:46:20'),
-(2, 'National University Of Science And Technology', 'info@nust.ac.zw', 'nust', 'nustpassword', 'education', '-20.1629396, 28.6381467', 780948498, 'info@nust.ac.zw', 'https://nust.ac.zw', 0, 'RJPR+75X, Cnr Cecil Avenue & Gwanda Road, Bulawayo', NULL, '2025-03-01 21:45:35', '2025-02-23 09:12:08'),
-(3, 'Christian Brothers College', 'info@cbc.co.zw', 'cbc', 'cbcpassword', 'education', '-20.1803634, 28.6323397', 780948498, 'cbc@cbc.co.zw', 'https://cbc.co.zw', 0, 'Chelmsford Road, Bulawayo', NULL, '2025-02-23 09:23:26', '2025-02-23 09:23:26');
+INSERT INTO `providers` (`provider_id`, `name`, `email`, `username`, `password`, `category`, `location`, `phone`, `primary_email`, `website`, `verified`, `about`, `street`, `city`, `state`, `weekday_hours`, `saturday_hours`, `sunday_hours`, `verified_on`, `updated_on`, `created_on`) VALUES
+(1, 'Momoservice', 'momo@momo.co.zw', 'momo', 'momo', 'momo', '-20.167634, 28.649736\n\n', 4920348, 'momo@momo.co.zw', 'https://momo.co.zw', 0, '13 Momo Street,\r\nSkjsdkj\r\ndslk', '13 Momo Street', 'Bulawayo', '', '', '', '', NULL, '2025-03-04 13:30:45', '2025-02-23 07:46:20'),
+(2, 'National University Of Science And Technology', 'info@nust.ac.zw', 'nust', 'nustpassword', 'education', '-20.1629396, 28.6381467', 780948498, 'info@nust.ac.zw', 'https://nust.ac.zw', 0, 'RJPR+75X, Cnr Cecil Avenue & Gwanda Road, Bulawayo', '', '', '', '', '', '', NULL, '2025-03-01 21:45:35', '2025-02-23 09:12:08'),
+(3, 'Christian Brothers College', 'info@cbc.co.zw', 'cbc', 'cbcpassword', 'education', '-20.1803634, 28.6323397', 780948498, 'cbc@cbc.co.zw', 'https://cbc.co.zw', 0, 'Chelmsford Road, Bulawayo', '', '', '', '', '', '', NULL, '2025-02-23 09:23:26', '2025-02-23 09:23:26');
 
 -- --------------------------------------------------------
 

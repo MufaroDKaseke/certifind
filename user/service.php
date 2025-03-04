@@ -36,9 +36,14 @@ $reviews = new Reviews();
           <div class="col-12">
             <div class="rounded rounded-3 bg-primary p-3 text-white">
               <div class="mb-3">
-                <h3 class="text-capitalize"><?= $providerDetails['name'] ?></h3>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h3 class="text-capitalize mb-0"><?= $providerDetails['name'] ?></h3>
+                  <?php if ($providerDetails['verified']) { ?>
+                    <i class="bi bi-patch-check-fill text-primary fs-4"></i>
+                  <?php } ?>
+                </div>
                 <div class="service-rating d-flex align-items-center justify-content-between">
-                  <div>
+                  <div class="d-flex align-items-center">
                     <?php
                     $fullStars = floor($providerDetails['avg_rating']);
                     $halfStar = ($providerDetails['avg_rating'] - $fullStars) >= 0.5 ? 1 : 0;
@@ -54,6 +59,7 @@ $reviews = new Reviews();
                       echo '<i class="bi bi-star text-warning"></i>';
                     }
                     ?>
+                    <span class="ms-2">(<?= $providerDetails['review_count'] ?? 0 ?> reviews)</span>
                   </div>
                   <button class="btn btn-sm btn-secondary ms-auto" data-bs-toggle="modal" data-bs-target="#leaveReviewModal">
                     Rate Us
@@ -62,9 +68,9 @@ $reviews = new Reviews();
               </div>
               <ul class="service-details nav flex-column mb-3">
                 <li class="nav-item">
-                  <a href="" class="nav-link text-white px-0">
+                  <a class="nav-link text-white px-0">
                     <i class="bi bi-geo-alt me-2"></i>
-                    <?= $providerDetails['address'] ?>
+                    <?= $providerDetails['street'] ?>, <?= $providerDetails['city'] ?>, <?= $providerDetails['state'] ?>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -74,11 +80,19 @@ $reviews = new Reviews();
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= $providerDetails['website'] ?>" class="nav-link text-white px-0">
-                    <i class="bi bi-globe2 me-2"></i>
-                    <?= $providerDetails['website'] ?>
+                  <a href="mailto:<?= $providerDetails['primary_email'] ?>" class="nav-link text-white px-0">
+                    <i class="bi bi-envelope me-2"></i>
+                    <?= $providerDetails['primary_email'] ?>
                   </a>
                 </li>
+                <?php if ($providerDetails['website']) { ?>
+                  <li class="nav-item">
+                    <a href="<?= $providerDetails['website'] ?>" target="_blank" class="nav-link text-white px-0">
+                      <i class="bi bi-globe2 me-2"></i>
+                      <?= $providerDetails['website'] ?>
+                    </a>
+                  </li>
+                <?php } ?>
               </ul>
 
               <ul class="service-tab nav nav-tabs" id="serviceTab" role="tablist">
@@ -147,7 +161,20 @@ $reviews = new Reviews();
                   ?>
                 </div>
                 <div class="tab-pane fade" id="hours" role="tabpanel" aria-labelledby="hours-tab">
-                  <p>Service hours information.</p>
+                  <div class="hours-list">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Weekdays:</span>
+                      <span><?= $providerDetails['weekday_hours'] ?></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Saturday:</span>
+                      <span><?= $providerDetails['saturday_hours'] ?></span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <span>Sunday:</span>
+                      <span><?= $providerDetails['sunday_hours'] ?></span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

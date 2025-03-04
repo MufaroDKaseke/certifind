@@ -32,7 +32,7 @@ if (isset($_GET['lat']) && isset($_GET['long'])) {
               <div class="small mt-1">
                 <i class="bi bi-star-fill text-warning"></i>
                 <span class="ms-1 fw-medium"><?= $service['avg_rating'] ?></span>
-                <span class="fw-light">(186 reviews)</span>
+                <span class="fw-light">(<?= $service['review_count'] ?> reviews)</span>
               </div>
             </div>
             <div class="flex-shrink-0 ms-2">

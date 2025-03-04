@@ -56,5 +56,4 @@
       </div>
     </div>
   </section>
-  <form action=""></form>
 </body>
