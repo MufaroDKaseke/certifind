@@ -220,7 +220,10 @@ $services = new Services();
               success: function(response) {
                 let location = '';
                 if (response.address) {
-                  location = response.address.suburb + ', ' + response.address.city;
+                  location = response.address.city;
+                  if (response.address.suburb) {
+                  location = response.address.suburb + ', ' + location;
+                  }
                 }
                 $('#location_name').text(location || 'Location not found');
               },

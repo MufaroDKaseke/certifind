@@ -39,30 +39,35 @@ $services = new Services();
                 <span class="bg-white text-primary px-2 py-1 rounded-pill small fw-semibold mb-2 d-inline-block">
                   <i class="bi bi-shield-check me-1"></i>Service Provider
                 </span>
-                <h3 class="mb-1 fw-bold">Riverside Hospital</h3>
-                <p class="mb-2 fw-light">Healthcare Services</p>
+                <h3 class="mb-1 fw-bold"><?= $_SESSION['name'] ?></h3>
+                <p class="mb-2 fw-light"><?= $_SESSION['category'] ?></p>
                 <div class="small">
                   <i class="bi bi-geo-alt me-1"></i>
-                  <span class="fw-medium">3700 Main St, Riverside</span>
+                  <span class="fw-medium"><?= $_SESSION['street'] ?>, <?= $_SESSION['city'] ?></span>
                 </div>
               </div>
               <div class="text-end">
-                <div class="bg-success text-white rounded-pill px-3 py-1 small fw-semibold">
-                  <i class="bi bi-check-circle me-1"></i>Verified
-                </div>
+                <?php if ($_SESSION['verified']) { ?>
+                  <div class="bg-success text-white rounded-pill px-3 py-1 small fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i>Verified
+                  </div>
+                <?php } ?>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Quick Stats -->
+        <?php 
+        $providerStats = $services->getServiceByProviderId($_SESSION['provider_id']);
+        ?>
         <div class="col-12 mb-4">
           <div class="row g-2">
             <div class="col-4">
               <div class="card border-0 bg-secondary text-white shadow-sm">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-star-fill text-warning mb-2 fs-4"></i>
-                  <div class="fw-bold h3 mb-0">4.8</div>
+                  <div class="fw-bold h3 mb-0"><?= $providerStats['avg_rating'] ?? '0.0' ?></div>
                   <div class="small fw-light">Rating</div>
                 </div>
               </div>
@@ -71,7 +76,7 @@ $services = new Services();
               <div class="card border-0 bg-secondary text-white shadow-sm">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-chat-text-fill text-warning mb-2 fs-4"></i>
-                  <div class="fw-bold h3 mb-0">127</div>
+                  <div class="fw-bold h3 mb-0"><?= $providerStats['review_count'] ?? '0' ?></div>
                   <div class="small fw-light">Reviews</div>
                 </div>
               </div>
@@ -80,7 +85,7 @@ $services = new Services();
               <div class="card border-0 bg-secondary text-white shadow-sm">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-graph-up-arrow text-warning mb-2 fs-4"></i>
-                  <div class="fw-bold h3 mb-0">542</div>
+                  <div class="fw-bold h3 mb-0">-</div>
                   <div class="small fw-light">Views</div>
                 </div>
               </div>
@@ -131,22 +136,21 @@ $services = new Services();
               <div class="d-flex align-items-center">
                 <i class="bi bi-clock fs-5 me-2"></i>
                 <h6 class="mb-0">Business Hours</h6>
-                <span class="badge bg-success ms-auto">Open Now</span>
               </div>
             </div>
             <div class="card-body p-0">
               <div class="list-group list-group-flush">
                 <div class="list-group-item d-flex justify-content-between py-2">
                   <span class="fw-medium">Monday - Friday</span>
-                  <span class="text-muted">8:00 AM - 5:00 PM</span>
+                  <span class="text-muted"><?= $_SESSION['weekday_hours'] ?></span>
                 </div>
                 <div class="list-group-item d-flex justify-content-between py-2">
                   <span class="fw-medium">Saturday</span>
-                  <span class="text-muted">9:00 AM - 2:00 PM</span>
+                  <span class="text-muted"><?= $_SESSION['saturday_hours'] ?></span>
                 </div>
                 <div class="list-group-item d-flex justify-content-between py-2">
                   <span class="fw-medium">Sunday</span>
-                  <span class="text-muted">Closed</span>
+                  <span class="text-muted"><?= $_SESSION['sunday_hours'] ?></span>
                 </div>
               </div>
             </div>
@@ -166,23 +170,32 @@ $services = new Services();
                   <i class="bi bi-telephone text-primary me-3"></i>
                   <div>
                     <div class="fw-medium">Phone Number</div>
-                    <div class="text-muted small">+1 (951) 555-0123</div>
+                    <div class="text-muted small"><?= $_SESSION['phone'] ?></div>
                   </div>
                 </div>
                 <div class="list-group-item d-flex align-items-center py-2">
                   <i class="bi bi-envelope text-primary me-3"></i>
                   <div>
                     <div class="fw-medium">Email Address</div>
-                    <div class="text-muted small">contact@riverside.hospital</div>
+                    <div class="text-muted small"><?= $_SESSION['primary_email'] ?></div>
                   </div>
                 </div>
                 <div class="list-group-item d-flex align-items-center py-2">
                   <i class="bi bi-geo-alt text-primary me-3"></i>
                   <div>
                     <div class="fw-medium">Location</div>
-                    <div class="text-muted small">3700 Main St, Riverside, CA 92501</div>
+                    <div class="text-muted small"><?= $_SESSION['street'] ?>, <?= $_SESSION['city'] ?>, <?= $_SESSION['state'] ?></div>
                   </div>
                 </div>
+                <?php if ($_SESSION['website']) { ?>
+                  <div class="list-group-item d-flex align-items-center py-2">
+                    <i class="bi bi-globe text-primary me-3"></i>
+                    <div>
+                      <div class="fw-medium">Website</div>
+                      <div class="text-muted small"><?= $_SESSION['website'] ?></div>
+                    </div>
+                  </div>
+                <?php } ?>
               </div>
             </div>
           </div>

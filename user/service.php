@@ -97,7 +97,10 @@ $reviews = new Reviews();
 
               <ul class="service-tab nav nav-tabs" id="serviceTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true">Location</button>
+                  <button class="nav-link active" id="location-tab" data-bs-toggle="tab" data-bs-target="#location" type="button" role="tab" aria-controls="location" aria-selected="true">Location</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="false">About</button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
@@ -107,7 +110,7 @@ $reviews = new Reviews();
                 </li>
               </ul>
               <div class="service-tab-content tab-content" id="serviceTabContent">
-                <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                <div class="tab-pane fade show active" id="location" role="tabpanel" aria-labelledby="location-tab">
                   <p>
                     <iframe
                       class="service-map"
@@ -119,8 +122,10 @@ $reviews = new Reviews();
                       referrerpolicy="no-referrer-when-downgrade"
                       src="https://www.google.com/maps?q=<?= $providerDetails['location'] . trim(' ') ?>&output=embed">
                     </iframe>
-
                   </p>
+                </div>
+                <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                  <p class="mt-3"><?= htmlspecialchars($providerDetails['about']) ?></p>
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                   <?php
@@ -129,10 +134,12 @@ $reviews = new Reviews();
 
                   if (!empty($serviceReviews)) {
                     foreach ($serviceReviews as $review) {
-                      echo '<div class="review mb-3">';
-                      echo '<div class="review-header d-flex justify-content-between align-items-center">';
-                      echo '<h5 class="mb-0">user</h5>';
-                      echo '<div class="review-rating">';
+                      ?>
+                      <div class="review mb-3">
+                      <div class="review-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0"><?= $review['reviewer_name']?></h5>
+                      <div class="review-rating">
+                      <?php
                       $fullStars = floor($review['rating']);
                       $halfStar = ($review['rating'] - $fullStars) >= 0.5 ? 1 : 0;
                       $emptyStars = 5 - $fullStars - $halfStar;
@@ -146,13 +153,15 @@ $reviews = new Reviews();
                       for ($i = 0; $i < $emptyStars; $i++) {
                         echo '<i class="bi bi-star text-warning"></i>';
                       }
-                      echo '</div>';
-                      echo '</div>';
-                      echo '<div class="review-body">';
-                      echo '<p>' . htmlspecialchars($review['comment']) . '</p>';
-                      echo '</div>';
-                      echo '</div>';
-                      echo '<hr />';
+                      ?>
+                      </div>
+                      </div>
+                      <div class="review-body">
+                      <p><?= htmlspecialchars($review['comment']) ?></p>
+                      </div>
+                      </div>
+                      <hr />
+                      <?php
                     }
                   } else {
                     echo '<p>No reviews available.</p>';

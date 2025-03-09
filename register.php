@@ -14,7 +14,7 @@ require_once './app/config/config.php';
     <div class="container py-4">
       <div class="row justify-content-center">
         <div class="col-11">
-          <h1 class="text-center display-3 text-white fw-semibold mb-4">Register Business</h1>
+          <h1 class="text-center display-3 text-white fw-semibold mb-4">Register</h1>
           
           <!-- Progress Indicator -->
           <div class="progress mb-4" style="height: 4px;">
