@@ -95,7 +95,6 @@ a {
   background: linear-gradient(45deg, $primary, $secondary);
   &-icon {
     font-size: 5rem;
-    transform: rotateZ(45deg);
   }
 }
 
@@ -187,4 +186,30 @@ a {
 /* ==========Provider Profile========== */
 .provider-profile {
   margin: 5rem auto;
+}
+
+/* =========Signup Forms========= */
+.signup {
+  &-form {
+    .form-control, .form-select {
+      &:focus {
+        background-color: $white;
+        box-shadow: none;
+        border-color: $primary;
+      }
+      
+      &::placeholder {
+        color: #adb5bd;
+      }
+    }
+  }
+}
+
+.form {
+  &-card {
+    background: $white;
+    border-radius: 1rem;
+    border: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
 }

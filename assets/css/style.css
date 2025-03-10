@@ -79,7 +79,6 @@ a {
 }
 .welcome-icon {
   font-size: 5rem;
-  transform: rotateZ(45deg);
 }
 
 /* ======Home Section========= */
@@ -160,6 +159,23 @@ a {
 /* ==========Provider Profile========== */
 .provider-profile {
   margin: 5rem auto;
+}
+
+/* =========Signup Forms========= */
+.signup-form .form-control:focus, .signup-form .form-select:focus {
+  background-color: #ffffff;
+  box-shadow: none;
+  border-color: #5e48cc;
+}
+.signup-form .form-control::placeholder, .signup-form .form-select::placeholder {
+  color: #adb5bd;
+}
+
+.form-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=style.css.map */
