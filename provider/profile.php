@@ -6,6 +6,7 @@ require_once '../app/classes/provider.class.php';
 require_once '../app/classes/verification.class.php';
 
 $provider = new Provider();
+$providerDetails = $provider->getUserDetails();
 $verification = new Verification($_SESSION['provider_id']);
 ?>
 
@@ -34,14 +35,15 @@ $verification = new Verification($_SESSION['provider_id']);
                 <div class="mb-3">
                   <i class="bi bi-building display-1"></i>
                 </div>
-                <h4 class="fw-bold mb-1">Riverside Hospital</h4>
-                <p class="mb-2 fw-light">Healthcare Provider</p>
+                <h4 class="fw-bold mb-1"><?= $providerDetails['name'] ?></h4>
+                <p class="mb-2 fw-light"><?= $providerDetails['category'] ?></p>
                 <div class="d-flex justify-content-center gap-2">
-                  <span class="badge bg-success">
-                    <i class="bi bi-patch-check-fill me-1"></i>Verified
+                  <span class="badge bg-<?= $providerDetails['verified'] ? 'success' : 'warning' ?>">
+                    <i class="bi bi-<?= $providerDetails['verified'] ? 'patch-check-fill' : 'clock' ?> me-1"></i>
+                    <?= $providerDetails['verified'] ? 'Verified' : 'Pending Verification' ?>
                   </span>
                   <span class="badge bg-light text-dark">
-                    <i class="bi bi-geo-alt me-1"></i>Riverside, CA
+                    <i class="bi bi-geo-alt me-1"></i><?= $providerDetails['city'] ?>, <?= $providerDetails['state'] ?>
                   </span>
                 </div>
               </div>
@@ -65,19 +67,19 @@ $verification = new Verification($_SESSION['provider_id']);
               <div class="list-group list-group-flush">
                 <div class="list-group-item py-3">
                   <small class="text-muted d-block">Business Name</small>
-                  <span class="fw-medium">Riverside Community Hospital</span>
+                  <span class="fw-medium"><?= $providerDetails['name'] ?></span>
                 </div>
                 <div class="list-group-item py-3">
                   <small class="text-muted d-block">Category</small>
-                  <span class="fw-medium">Healthcare Services</span>
+                  <span class="fw-medium"><?= $providerDetails['category'] ?></span>
                 </div>
                 <div class="list-group-item py-3">
-                  <small class="text-muted d-block">Business ID</small>
-                  <span class="fw-medium">HC-2024-1234</span>
+                  <small class="text-muted d-block">About</small>
+                  <span class="fw-medium"><?= $providerDetails['about'] ?></span>
                 </div>
                 <div class="list-group-item py-3">
                   <small class="text-muted d-block">Address</small>
-                  <span class="fw-medium">3700 Main St, Riverside, CA 92501</span>
+                  <span class="fw-medium"><?= $providerDetails['street'] ?>, <?= $providerDetails['city'] ?>, <?= $providerDetails['state'] ?></span>
                 </div>
               </div>
             </div>
@@ -100,82 +102,36 @@ $verification = new Verification($_SESSION['provider_id']);
               <div class="list-group list-group-flush">
                 <div class="list-group-item py-3">
                   <small class="text-muted d-block">Email Address</small>
-                  <span class="fw-medium">contact@riverside.hospital</span>
+                  <span class="fw-medium"><?= $providerDetails['email'] ?></span>
                 </div>
                 <div class="list-group-item py-3">
                   <small class="text-muted d-block">Phone Number</small>
-                  <span class="fw-medium">+1 (951) 555-0123</span>
+                  <span class="fw-medium"><?= $providerDetails['phone'] ?></span>
                 </div>
                 <div class="list-group-item py-3">
                   <small class="text-muted d-block">Website</small>
-                  <span class="fw-medium">www.riverside.hospital</span>
+                  <span class="fw-medium"><?= $providerDetails['website'] ?: 'Not provided' ?></span>
+                </div>
+                <div class="list-group-item py-3">
+                  <small class="text-muted d-block">Business Hours</small>
+                  <div class="fw-medium">
+                    <div>Mon-Fri: <?= $providerDetails['weekday_hours'] ?></div>
+                    <div>Saturday: <?= $providerDetails['saturday_hours'] ?></div>
+                    <div>Sunday: <?= $providerDetails['sunday_hours'] ?></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Settings -->
-        <div class="col-12">
-          <div class="card border-0 shadow-sm">
-            <div class="card-header bg-light py-3">
-              <div class="d-flex align-items-center">
-                <i class="bi bi-gear text-primary fs-4 me-2"></i>
-                <h6 class="mb-0 fw-bold">Settings</h6>
-              </div>
-            </div>
-            <div class="card-body p-0">
-              <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action py-3">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-bell text-primary fs-5 me-3"></i>
-                    <div>
-                      <span class="fw-medium d-block">Notifications</span>
-                      <small class="text-muted">Manage your notifications</small>
-                    </div>
-                    <i class="bi bi-chevron-right ms-auto"></i>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-shield-lock text-primary fs-5 me-3"></i>
-                    <div>
-                      <span class="fw-medium d-block">Security</span>
-                      <small class="text-muted">Update password and security settings</small>
-                    </div>
-                    <i class="bi bi-chevron-right ms-auto"></i>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-clock-history text-primary fs-5 me-3"></i>
-                    <div>
-                      <span class="fw-medium d-block">Business Hours</span>
-                      <small class="text-muted">Set your operating hours</small>
-                    </div>
-                    <i class="bi bi-chevron-right ms-auto"></i>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 text-danger">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-box-arrow-right text-danger fs-5 me-3"></i>
-                    <div>
-                      <span class="fw-medium d-block">Logout</span>
-                      <small class="text-muted">Sign out of your account</small>
-                    </div>
-                    <i class="bi bi-chevron-right ms-auto"></i>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
+        <!-- Remove Settings section -->
         </div>
-        
       </div>
     </div>
   </section>
 
-  <!-- Floating Footer Navigation -->
+  <!-- Footer Navigation -->
   <div class="footer w-100 d-flex justify-content-center shadow">
     <div class="row justify-content-between m-0 p-2 rounded rounded-3 bg-primary">
       <div class="col-3 text-center">
@@ -201,5 +157,25 @@ $verification = new Verification($_SESSION['provider_id']);
     </div>
   </div>
   <!-- End Of Floating Footer Navigation -->
+
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog vh-100 d-flex align-items-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="<?= $_ENV['SITE_URL'] ?>/provider/logout.php" class="btn btn-primary">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Of Logout Modal -->
 
 </body>

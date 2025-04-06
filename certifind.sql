@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2025 at 12:31 PM
+-- Generation Time: Mar 12, 2025 at 02:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,11 +61,12 @@ INSERT INTO `providers` (`provider_id`, `name`, `email`, `username`, `password`,
 (3, 'Bulawayo Central Police Station', 'bulawayocentral@zrp.gov.zw', 'zrpcentral', 'police2024', 'emergency', '-20.1544, 28.5858', 292272626, 'bulawayocentral@zrp.gov.zw', '', 1, 'Main police station serving Bulawayo Central Business District', '8th Avenue', 'Bulawayo', 'Bulawayo', '00:00-23:59', '00:00-23:59', '00:00-23:59', '2025-01-10 11:20:00', '2025-02-23 09:23:26', '2024-12-10 09:23:26'),
 (4, 'United Bulawayo Hospitals', 'info@ubh.gov.zw', 'ubh', 'ubh2024', 'healthcare', '-20.1483, 28.5726', 292240481, 'admin@ubh.gov.zw', 'https://ubh.gov.zw', 1, 'Major public healthcare facility in Bulawayo', 'Masiyephambili Drive', 'Bulawayo', 'Bulawayo', '00:00-23:59', '00:00-23:59', '00:00-23:59', '2025-01-05 10:45:00', '2025-03-01 21:45:35', '2024-12-15 09:12:08'),
 (5, 'Girls College Bulawayo', 'admin@girlscollege.co.zw', 'girlscollege', 'gc2024', 'education', '-20.1597, 28.5931', 292251863, 'info@girlscollege.co.zw', 'https://girlscollege.co.zw', 1, 'Private girls high school established in 1983', 'Pauling Road', 'Bulawayo', 'Bulawayo', '07:30-16:00', 'CLOSED', 'CLOSED', '2025-01-25 13:40:00', '2025-02-23 09:23:26', '2024-12-20 09:23:26'),
-(6, 'Bulawayo Legal Aid Clinic', 'info@blac.org.zw', 'blac', 'blac2024', 'legal', '-20.1561, 28.5850', 292882999, 'legal@blac.org.zw', 'https://blac.org.zw', 1, 'Non-profit legal aid organization providing legal services to the community', '9th Avenue', 'Bulawayo', 'Bulawayo', '08:00-16:00', '09:00-12:00', 'CLOSED', '2025-01-12 10:30:00', NOW(), '2024-12-05 08:00:00'),
-(7, 'Trade Kings Zimbabwe', 'info@tradekings.co.zw', 'tradekings', 'tk2024', 'trade', '-20.1375, 28.5894', 292881234, 'info@tradekings.co.zw', 'https://tradekings.co.zw', 1, 'Manufacturing and trading company specializing in household products', 'Belmont Industrial Area', 'Bulawayo', 'Bulawayo', '08:00-17:00', '08:00-13:00', 'CLOSED', '2025-01-18 11:20:00', NOW(), '2024-12-10 09:00:00'),
-(8, 'Bulawayo Fire Brigade', 'fire@bcc.co.zw', 'byo_fire', 'fire2024', 'emergency', '-20.1498, 28.5847', 292881122, 'emergency@bcc.co.zw', 'https://bcc.co.zw', 1, '24/7 emergency fire and rescue services', 'R Mugabe Way', 'Bulawayo', 'Bulawayo', '00:00-23:59', '00:00-23:59', '00:00-23:59', '2025-01-08 09:15:00', NOW(), '2024-12-15 10:00:00'),
-(9, 'Mpilo Central Hospital', 'info@mpilo.gov.zw', 'mpilo', 'mpilo2024', 'healthcare', '-20.1447, 28.5705', 292883333, 'admin@mpilo.gov.zw', 'https://mpilo.gov.zw', 1, 'Major referral hospital serving Bulawayo and surrounding regions', 'Vera Road', 'Bulawayo', 'Bulawayo', '00:00-23:59', '00:00-23:59', '00:00-23:59', '2025-01-14 13:45:00', NOW(), '2024-12-20 11:00:00'),
-(10, 'Standard Chartered Bank', 'stanchart@sc.com', 'stanchart', 'scb2024', 'business', '-20.1539, 28.5856', 292880123, 'business@sc.com', 'https://sc.com/zw', 1, 'International banking institution providing comprehensive financial services', '9th Avenue', 'Bulawayo', 'Bulawayo', '08:00-15:00', '08:00-12:00', 'CLOSED', '2025-01-22 14:30:00', NOW(), '2024-12-25 12:00:00');
+(6, 'Bulawayo Legal Aid Clinic', 'info@blac.org.zw', 'blac', 'blac2024', 'legal', '-20.1561, 28.5850', 292882999, 'legal@blac.org.zw', 'https://blac.org.zw', 1, 'Non-profit legal aid organization providing legal services to the community', '9th Avenue', 'Bulawayo', 'Bulawayo', '08:00-16:00', '09:00-12:00', 'CLOSED', '2025-01-12 10:30:00', '2025-03-04 11:44:22', '2024-12-05 08:00:00'),
+(7, 'Trade Kings Zimbabwe', 'info@tradekings.co.zw', 'tradekings', 'tk2024', 'trade', '-20.1375, 28.5894', 292881234, 'info@tradekings.co.zw', 'https://tradekings.co.zw', 1, 'Manufacturing and trading company specializing in household products', 'Belmont Industrial Area', 'Bulawayo', 'Bulawayo', '08:00-17:00', '08:00-13:00', 'CLOSED', '2025-01-18 11:20:00', '2025-03-04 11:44:22', '2024-12-10 09:00:00'),
+(8, 'Bulawayo Fire Brigade', 'fire@bcc.co.zw', 'byo_fire', 'fire2024', 'emergency', '-20.1498, 28.5847', 292881122, 'emergency@bcc.co.zw', 'https://bcc.co.zw', 1, '24/7 emergency fire and rescue services', 'R Mugabe Way', 'Bulawayo', 'Bulawayo', '00:00-23:59', '00:00-23:59', '00:00-23:59', '2025-01-08 09:15:00', '2025-03-04 11:44:22', '2024-12-15 10:00:00'),
+(9, 'Mpilo Central Hospital', 'info@mpilo.gov.zw', 'mpilo', 'mpilo2024', 'healthcare', '-20.1447, 28.5705', 292883333, 'admin@mpilo.gov.zw', 'https://mpilo.gov.zw', 1, 'Major referral hospital serving Bulawayo and surrounding regions', 'Vera Road', 'Bulawayo', 'Bulawayo', '00:00-23:59', '00:00-23:59', '00:00-23:59', '2025-01-14 13:45:00', '2025-03-04 11:44:22', '2024-12-20 11:00:00'),
+(10, 'Standard Chartered Bank', 'stanchart@sc.com', 'stanchart', 'scb2024', 'business', '-20.1539, 28.5856', 292880123, 'business@sc.com', 'https://sc.com/zw', 1, 'International banking institution providing comprehensive financial services', '9th Avenue', 'Bulawayo', 'Bulawayo', '08:00-15:00', '08:00-12:00', 'CLOSED', '2025-01-22 14:30:00', '2025-03-04 11:44:22', '2024-12-25 12:00:00'),
+(13, 'Omorfo Tech Labs', 'omorfotechlabs@gmail.com', 'omorfotechlabs@gmail.com', 'omorfo', 'business', '-20.151254329138304,28.616921721938716', 716896977, 'omorfotechlabs@gmail.com', 'https://omorfotech.co.zw', 0, 'Some tech business ', '5 Khumalo', 'Bulawayo', 'Bulawayo', '08:00-17:00', '08:00-13:00', '08:00-13:00', NULL, '2025-03-11 12:40:40', '2025-03-11 12:40:40');
 
 -- --------------------------------------------------------
 
@@ -157,16 +158,7 @@ CREATE TABLE `verifications` (
 --
 
 INSERT INTO `verifications` (`verification_id`, `provider_id`, `doc_1`, `doc_2`, `doc_3`, `status`, `requested_on`, `verified_on`) VALUES
-(1, 1, 'hospital_license.pdf', 'tax_clearance.pdf', 'medical_council_cert.pdf', 1, '2024-12-15 09:30:00', '2025-01-15 14:30:00'),
-(2, 2, 'university_charter.pdf', 'zimche_accreditation.pdf', 'tax_clearance.pdf', 1, '2024-12-20 10:45:00', '2025-01-20 09:15:00'),
-(3, 3, 'police_charter.pdf', 'facility_cert.pdf', 'security_clearance.pdf', 1, '2024-12-10 08:15:00', '2025-01-10 11:20:00'),
-(4, 4, 'hospital_registration.pdf', 'health_license.pdf', 'facility_cert.pdf', 1, '2024-12-05 11:20:00', '2025-01-05 10:45:00'),
-(5, 5, 'school_license.pdf', 'education_cert.pdf', 'tax_clearance.pdf', 1, '2024-12-25 13:00:00', '2025-01-25 13:40:00'),
-(6, 'legal_practice_cert.pdf', 'tax_clearance.pdf', 'professional_indemnity.pdf', 1, '2024-12-12 09:30:00', '2025-01-12 10:30:00'),
-(7, 'trading_license.pdf', 'factory_cert.pdf', 'tax_clearance.pdf', 1, '2024-12-18 10:45:00', '2025-01-18 11:20:00'),
-(8, 'emergency_service_cert.pdf', 'equipment_cert.pdf', 'staff_certification.pdf', 1, '2024-12-08 08:15:00', '2025-01-08 09:15:00'),
-(9, 'hospital_license.pdf', 'medical_board_cert.pdf', 'facility_cert.pdf', 1, '2024-12-14 12:45:00', '2025-01-14 13:45:00'),
-(10, 'banking_license.pdf', 'rbz_cert.pdf', 'compliance_cert.pdf', 1, '2024-12-22 13:30:00', '2025-01-22 14:30:00');
+(2, 13, '1741689715_13_1_Test N02303282D.pdf', '1741689715_13_2_Individual Assignment N0230382D.pdf', '1741689715_13_3_Analysis Of Algo - Individual Questions.pdf', 0, '2025-03-11 12:41:55', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -177,18 +169,6 @@ INSERT INTO `verifications` (`verification_id`, `provider_id`, `doc_1`, `doc_2`,
 --
 ALTER TABLE `providers`
   ADD PRIMARY KEY (`provider_id`);
-
---
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`review_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `verifications`
@@ -204,25 +184,13 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `providers`
 --
 ALTER TABLE `providers`
-  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `reviews`
---
-ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -25,32 +25,56 @@ $userDetails = $user->getUserDetails();
   <section class="profile animate__animated animate__fadeIn animate__fast">
     <div class="container">
       <div class="row">
-        <div class="col-12 mb-3">
-          <div class="profile-details rounded rounded-3 p-3 bg-light">
-            <div class="profile-name text-center">
-              <i class="bi bi-person-circle"></i>
-              <h3 class="mb-3 text-center fw-semibold"><?= $userDetails['name'] ?></h3>
+        <!-- Profile Header -->
+        <div class="col-12 mb-4">
+          <div class="card border-0 bg-secondary text-white shadow">
+            <div class="card-body p-4">
+              <div class="text-center mb-3">
+                <div class="mb-3">
+                  <i class="bi bi-person-circle display-1"></i>
+                </div>
+                <h4 class="fw-bold mb-1"><?= $userDetails['name'] ?></h4>
+                <p class="mb-2 opacity-75">Member since <?= date('M Y', strtotime($userDetails['registered_on'])) ?></p>
+              </div>
             </div>
-            <form hx-post="<?= $_ENV['SITE_URL'] ?>/user/view/update_profile.php" hx-target="#saveChangesBtn" hx-swap="outerHTML">
-              <div class="mb-3">
-                <label for="username" class="form-label fw-semibold">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="<?= $userDetails['username'] ?>" readonly>
+          </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="col-12 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-light py-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person text-secondary fs-4 me-2"></i>
+                <h6 class="mb-0 fw-bold">Account Details</h6>
+                <button class="btn btn-sm btn-secondary ms-auto" id="editProfileBtn">
+                  <i class="bi bi-pencil"></i>
+                </button>
               </div>
-              <div class="mb-3">
-                <label for="email" class="form-label fw-semibold">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?= $userDetails['email'] ?>" readonly>
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label fw-semibold">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="<?= $userDetails['phone'] ?>" readonly>
-              </div>
-              <div class="mb-3">
-                <label for="address" class="form-label fw-semibold">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="123 Main St, Anytown, USA" readonly>
-              </div>
-              <button id="saveChangesBtn" type="submit" class="btn btn-secondary">Save Changes</button>
-              <button id="editProfileBtn" type="button" class="btn btn-primary">Edit Profile</button>
-            </form>
+            </div>
+            <div class="card-body p-0">
+              <form hx-post="<?= $_ENV['SITE_URL'] ?>/user/view/update_profile.php" hx-target="#saveChangesBtn" hx-swap="outerHTML">
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item py-3">
+                    <small class="text-muted d-block">Full Name</small>
+                    <input type="text" class="form-control border-0 fw-medium p-0" name="name" value="<?= $userDetails['name'] ?>" readonly>
+                  </div>
+                  <div class="list-group-item py-3">
+                    <small class="text-muted d-block">Email</small>
+                    <input type="email" class="form-control border-0 fw-medium p-0" name="email" value="<?= $userDetails['email'] ?>" readonly>
+                  </div>
+                  <div class="list-group-item py-3">
+                    <small class="text-muted d-block">Phone</small>
+                    <input type="tel" class="form-control border-0 fw-medium p-0" name="phone" value="<?= $userDetails['phone'] ?>" readonly>
+                  </div>
+                  <div class="list-group-item py-3">
+                    <small class="text-muted d-block">Username</small>
+                    <input type="text" class="form-control border-0 fw-medium p-0" name="username" value="<?= $userDetails['username'] ?>" readonly>
+                  </div>
+                </div>
+                <button id="saveChangesBtn" type="submit" class="btn btn-secondary w-100 rounded-0" style="display: none;">Save Changes</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -108,7 +132,6 @@ $userDetails = $user->getUserDetails();
     $(document).ready(function() {
       $('#saveChangesBtn').hide();
 
-      // Your code here
       $('#editProfileBtn').click(function() {
         $('#saveChangesBtn').show();
         $('#editProfileBtn').hide();

@@ -17,11 +17,11 @@ class RegisterProvider extends Database {
 
             // Insert into providers table
             $stmt = mysqli_prepare($this->db_conn, 
-                "INSERT INTO providers (name, email, username, password, category, description, 
-                                     phone, website, location, address, city, state, 
-                                     weekday_hours, saturday_hours, sunday_hours, 
-                                     verified) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, FALSE)"
+                "INSERT INTO providers (name, email, username, password, category, 
+                                     phone, website, location, street, city, state, 
+                                     weekday_hours, saturday_hours, sunday_hours,
+                                     about, primary_email, verified) 
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
 
             // Format business hours
@@ -31,17 +31,16 @@ class RegisterProvider extends Database {
 
             // Format location
             $location = $data['latitude'] . ',' . $data['longitude'];
+            
+            // Set verified status
+            $verified = 0;
 
-            // Hash password
-            $hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
-
-            mysqli_stmt_bind_param($stmt, 'ssssssssssssss',
-                $data['name'],
+            mysqli_stmt_bind_param($stmt, 'ssssssssssssssssi',
+                $data['business_name'],  // Using business name instead of personal name
                 $data['email'],
                 $data['email'], // Using email as username
-                $hashed_password,
+                $data['password'], // Using plain password
                 $data['category'],
-                $data['description'],
                 $data['phone'],
                 $data['website'],
                 $location,
@@ -50,7 +49,10 @@ class RegisterProvider extends Database {
                 $data['state'],
                 $weekday_hours,
                 $saturday_hours,
-                $sunday_hours
+                $sunday_hours,
+                $data['about'],
+                $data['email'],  // Using email as primary_email
+                $verified
             );
 
             $result = mysqli_stmt_execute($stmt);
@@ -85,10 +87,11 @@ class RegisterProvider extends Database {
     public function validateData($data) {
         $errors = [];
 
-        // Validate required fields
-        $required_fields = ['name', 'email', 'password', 'confirm_password', 
-                          'business_name', 'category', 'phone', 'street', 
-                          'city', 'state', 'latitude', 'longitude'];
+        // Update required fields to match schema - change name to business_name
+        $required_fields = ['business_name', 'email', 'password', 'confirm_password', 
+                          'category', 'phone', 'street', 
+                          'city', 'state', 'latitude', 'longitude',
+                          'about'];
 
         foreach ($required_fields as $field) {
             if (empty($data[$field])) {
@@ -126,10 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $register->register($_POST);
         echo $result['message'];
         if ($result['success']) {
-            // Redirect after 2 seconds
+            // Load login page after 2 seconds using HTMX
             echo "<script>
                     setTimeout(function() {
-                        window.location.href = '" . $_ENV['SITE_URL'] . "/provider/login.php';
+                        htmx.ajax('GET', '" . $_ENV['SITE_URL'] . "/provider/login.php', { 
+                            target: 'body',
+                            swap: 'outerHTML'
+                        });
                     }, 2000);
                   </script>";
         }

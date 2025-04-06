@@ -16,6 +16,9 @@ require_once '../app/config/config.php';
         <div class="col-11">
           <h1 class="text-center display-3 text-white fw-semibold mb-4">Register</h1>
           
+          <!-- Response Messages -->
+          <div id="response-div"></div>
+
           <!-- Progress Indicator -->
           <div class="progress mb-4" style="height: 4px;">
             <div class="progress-bar bg-white" role="progressbar" style="width: 25%;" id="progressBar"></div>
@@ -42,15 +45,20 @@ require_once '../app/config/config.php';
           </div>
 
           <!-- Form Steps -->
-          <form id="registrationForm" class="needs-validation" novalidate>
+          <form id="registrationForm" class="needs-validation" 
+                hx-post="<?= $_ENV['SITE_URL']?>/app/views/register_provider.php"
+                hx-trigger="submit"
+                hx-target="#response-div"
+                hx-swap="innerHTML"
+                novalidate>
             <!-- Step 1: Account Details -->
             <div class="form-step active" id="step1">
               <div class="card border-0 bg-white rounded-3 shadow">
                 <div class="card-body p-4">
                   <h6 class="fw-bold mb-3 text-primary">Create Your Account</h6>
                   <div class="mb-3">
-                    <label class="form-label text-dark">Full Name</label>
-                    <input type="text" class="form-control border-0 bg-light" name="name" required>
+                    <label class="form-label text-dark">Business Name</label>
+                    <input type="text" class="form-control border-0 bg-light" name="business_name" required>
                   </div>
                   <div class="mb-3">
                     <label class="form-label text-dark">Email Address</label>
@@ -88,7 +96,7 @@ require_once '../app/config/config.php';
                   </div>
                   <div class="mb-3">
                     <label class="form-label text-dark">Business Description</label>
-                    <textarea class="form-control border-0 bg-light" name="description" rows="3" required></textarea>
+                    <textarea class="form-control border-0 bg-light" name="about" rows="3" required></textarea>
                   </div>
                 </div>
               </div>
@@ -316,10 +324,16 @@ require_once '../app/config/config.php';
         }
       });
 
-      // Form submission
-      $('#registrationForm').on('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here
+      // Form submission - remove the old handler and add new one
+      $('#registrationForm').on('htmx:afterRequest', function(e) {
+        if (e.detail.successful) {
+          // If response contains redirect script, form was successful
+          if (e.detail.xhr.response.includes('window.location.href')) {
+            // Disable form controls
+            $('#registrationForm :input').prop('disabled', true);
+            $('#nextBtn, #prevBtn, #submitBtn').hide();
+          }
+        }
       });
     });
   </script>
